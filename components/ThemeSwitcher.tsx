@@ -64,7 +64,7 @@ export default function ModeToggle() {
         <Button
           variant="outline"
           size="icon"
-          className="bg-primary text-black rounded-md border-0"
+          className="bg-primary text-black rounded-md border-0 hover:bg-primary-dark"
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 " />
@@ -74,19 +74,19 @@ export default function ModeToggle() {
       <DropdownMenuContent align="end" className="bg-primary text-black">
         <DropdownMenuItem
           onClick={() => setTheme("light")}
-          className="hover:bg-neutral rounded-md"
+          className="hover:bg-neutral rounded-md hover:cursor-pointer"
         >
           Licht
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
-          className="hover:bg-neutral rounded-md"
+          className="hover:bg-neutral rounded-md hover:cursor-pointer"
         >
           Donker
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}
-          className="hover:bg-neutral rounded-md"
+          className="hover:bg-neutral rounded-md hover:cursor-pointer"
         >
           Systeem
         </DropdownMenuItem>

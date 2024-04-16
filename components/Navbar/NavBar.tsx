@@ -105,7 +105,7 @@ export default function Navbar({ items, logoSrc, themeSwitcher }: NavbarProps) {
                 ))}
                 <div className="flex items-center gap-2">
                   {" "}
-                  <Button text="Contact" buttonType="text" />
+                  <Button text="Contact" />
                   {themeSwitcher && <ModeToggle />}
                 </div>
               </ul>
