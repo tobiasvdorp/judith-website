@@ -1,6 +1,7 @@
 "use client";
 import { builder, Builder, withChildren } from "@builder.io/react";
 import Button from "./components/Standard/Button";
+import Navbar from "./components/Navbar/NavBar";
 import Text from "./components/Standard/Text";
 import { ThemeProvider } from "./components/theme-provider";
 
@@ -98,6 +99,44 @@ Builder.registerComponent(withChildren(ThemeProvider), {
       meta: {
         ts: "ValueObject",
       },
+    },
+  ],
+});
+
+Builder.registerComponent(Navbar, {
+  name: "Navbar",
+  inputs: [
+    {
+      name: "items",
+      type: "list",
+      subFields: [
+        {
+          name: "href",
+          type: "string",
+          required: true,
+          defaultValue: "https://",
+        },
+        {
+          name: "label",
+          type: "string",
+          required: true,
+          defaultValue: "New Item",
+        },
+      ],
+      required: true,
+      defaultValue: [],
+    },
+    {
+      name: "logoSrc",
+      type: "file",
+      allowedFileTypes: ["png", "jpg", "webp", "svg", "jpeg"],
+      required: true,
+      defaultValue: "",
+    },
+    {
+      name: "themeSwitcher",
+      type: "boolean",
+      defaultValue: true,
     },
   ],
 });
