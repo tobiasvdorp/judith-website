@@ -19,12 +19,17 @@ const config = {
     },
     extend: {
       colors: {
-        "primary-light": "var(--color-primary-light)",
+        "primary-light": "var(--primary-light)",
         primary: "var(--primary)",
         "primary-dark": "var(--primary-dark)",
         neutral: "var(--neutral)",
         "neutral-light": "var(--neutral-light)",
         "neutral-dark": "var(--neutral-dark)",
+      },
+
+      fontFamily: {
+        space: ["var(--font-space)", "sans"],
+        rodetta: ["var(--font-rodetta)", "serif"],
       },
 
       keyframes: {
