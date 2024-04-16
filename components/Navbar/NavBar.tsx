@@ -38,7 +38,7 @@ export default function Navbar({ items, logoSrc, themeSwitcher }: NavbarProps) {
           height={40}
           priority={true}
         />
-        <div className="flex justify-between max-w-[550px] w-full  ">
+        <div className="flex justify-between lg:max-w-[575px] md:max-w-[490px] w-full">
           {items.map((item, index) => (
             <a
               key={index}
@@ -78,7 +78,7 @@ export default function Navbar({ items, logoSrc, themeSwitcher }: NavbarProps) {
               onClick={() => setIsOpen(false)}
             ></div>
             <motion.div
-              className="fixed top-16 right-0 w-64 h-full bg-neutral z-50 shadow-lg"
+              className="fixed top-[69px] right-0 w-72 h-full bg-neutral z-50 shadow-lg md:hidden"
               initial="closed"
               animate={isOpen ? "open" : "closed"}
               exit="closed"
