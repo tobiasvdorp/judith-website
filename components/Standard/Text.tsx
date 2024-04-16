@@ -10,7 +10,7 @@ type TextProps = {
 export default function Text({ melk, kaas, name, fontSize }: TextProps) {
   return (
     <>
-      <p className="text-red-700">
+      <p className="">
         {melk}
         {name}
         {fontSize}
