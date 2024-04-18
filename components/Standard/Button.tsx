@@ -1,4 +1,5 @@
 import { Builder } from "@builder.io/react";
+import { twMerge } from "tailwind-merge";
 
 type ButtonProps = {
   text?: string;
@@ -14,10 +15,7 @@ export default function Button({
   ...rest
 }: ButtonProps) {
   return (
-    <button
-      className={`bg-primary hover:bg-primary-dark rounded-md dark:text-black duration-200 px-8 py-2 ${className}`}
-      {...rest}
-    >
+    <button className={twMerge("button", className)} {...rest}>
       {text}
       {children}
     </button>

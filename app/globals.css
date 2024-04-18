@@ -45,3 +45,12 @@
     calc(var(--neutral-lightness) - 10%)
   );
 }
+
+.button,
+button {
+  @apply bg-primary hover:bg-primary-dark rounded-md dark:text-black duration-200 px-8 py-2;
+}
+
+a {
+  @apply hover:underline hover:underline-offset-4;
+}

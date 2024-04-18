@@ -1,23 +1,11 @@
-import { Builder } from "@builder.io/react";
-
 type TextProps = {
-  melk: string;
-  kaas: string;
-  name: string;
-  fontSize: number;
+  text: string;
 };
 
-export default function Text({ melk, kaas, name, fontSize }: TextProps) {
+export default function Text({ text }: TextProps) {
   return (
     <>
-      <p className="">
-        {melk}
-        {name}
-        {fontSize}
-      </p>
-      <p>
-        De {melk} is duur {kaas}
-      </p>
+      <p>{text}</p>
     </>
   );
 }
