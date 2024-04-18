@@ -7,21 +7,23 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, m, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
-type NavbarProps = {
-  items: Item[];
+type NavContent = {
+  links: {
+    url: string;
+    label: string;
+  }[];
   logoSrc: string;
-  themeSwitcher: boolean;
+  showThemeToggler: boolean;
 };
-
-type Item = {
-  label: string;
-  href: string;
-};
-
-export default function Navbar({ items, logoSrc, themeSwitcher }: NavbarProps) {
+export default function Navbar({
+  links,
+  logoSrc,
+  showThemeToggler,
+}: NavContent) {
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
   const sidebar = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "100%" },
@@ -39,19 +41,19 @@ export default function Navbar({ items, logoSrc, themeSwitcher }: NavbarProps) {
           priority={true}
         />
         <div className="flex justify-between lg:max-w-[575px] md:max-w-[490px] w-full">
-          {items.map((item, index) => (
-            <a
+          {links.map((link, index) => (
+            <Link
               key={index}
-              href={item.href}
+              href={link.url}
               className="text-gray-800 hover:text-blue-500"
             >
-              {item.label}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </div>
         <div className="flex items-center gap-2">
           <Button text="Contact" />
-          {themeSwitcher && <ModeToggle />}
+          {showThemeToggler && <ModeToggle />}
         </div>
       </div>
       {/* Mobile navbar */}
@@ -86,7 +88,7 @@ export default function Navbar({ items, logoSrc, themeSwitcher }: NavbarProps) {
               transition={{ duration: 0.3 }}
             >
               <ul className="flex flex-col gap-6 p-4">
-                {items.map((item, index) => (
+                {links.map((link, index) => (
                   <motion.li
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -98,15 +100,21 @@ export default function Navbar({ items, logoSrc, themeSwitcher }: NavbarProps) {
                     }}
                     key={index}
                   >
-                    <Link key={index} href={item.href} className="text-black ">
-                      {item.label}
+                    <Link
+                      key={index}
+                      href={link.url}
+                      className={`text-black
+                      // TODO: add router path
+                       `}
+                    >
+                      {link.label}
                     </Link>
                   </motion.li>
                 ))}
                 <div className="flex items-center gap-2">
                   {" "}
                   <Button text="Contact" />
-                  {themeSwitcher && <ModeToggle />}
+                  {showThemeToggler && <ModeToggle />}
                 </div>
               </ul>
             </motion.div>
