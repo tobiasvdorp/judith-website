@@ -8,6 +8,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, m, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import CustomLink from "../Standard/CustomLink";
 
 type NavContent = {
   links: {
@@ -52,7 +53,9 @@ export default function Navbar({
           ))}
         </div>
         <div className="flex items-center gap-2">
-          <Button text="Contact" />
+          <CustomLink linkType="button" href="/contact">
+            Contact
+          </CustomLink>
           {showThemeToggler && <ModeToggle />}
         </div>
       </div>
@@ -113,7 +116,9 @@ export default function Navbar({
                 ))}
                 <div className="flex items-center gap-2">
                   {" "}
-                  <Button text="Contact" />
+                  <CustomLink linkType="button" href="/contact">
+                    Contact
+                  </CustomLink>
                   {showThemeToggler && <ModeToggle />}
                 </div>
               </ul>
