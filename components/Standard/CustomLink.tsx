@@ -10,7 +10,9 @@ export default function CustomLink({ href, linkType, children }: LinkProps) {
   return (
     <Link
       href={href}
-      className={twMerge(`${linkType === "button" && "button"}`)}
+      className={twMerge(
+        `${linkType === "button" && "button flex items-center justify-center"}`
+      )}
     >
       {children}
     </Link>
