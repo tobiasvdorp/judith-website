@@ -36,7 +36,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${space.variable} ${rodetta.variable} font-space`}>
+      <body
+        className={`${space.variable} ${rodetta.variable} font-space bg-neutral`}
+      >
         {" "}
         <ThemeProvider
           attribute="class"
