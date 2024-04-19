@@ -19,7 +19,7 @@ export default function SectionCard({
 }: SectionCard) {
   return (
     <>
-      <div className=" overflow-hidden rounded-xl h-fit flex flex-col w-80 bg-neutral drop-shadow-md border-2 shadow-neutral-dark border-neutral-dark">
+      <div className=" overflow-hidden rounded-xl h-fit flex flex-col w-80 max-w-full bg-neutral drop-shadow-md border-2 shadow-neutral-dark border-neutral-dark">
         <div className="h-44 w-full relative">
           <Image
             src={imageSrc}
