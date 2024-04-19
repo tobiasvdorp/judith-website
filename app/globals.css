@@ -48,7 +48,7 @@
 
 .button,
 button {
-  @apply bg-primary hover:bg-primary-dark rounded-md dark:text-black duration-200 px-8 py-2;
+  @apply bg-primary hover:bg-primary-dark rounded-md duration-200 px-8 py-2;
 }
 
 a {

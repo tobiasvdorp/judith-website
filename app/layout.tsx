@@ -40,19 +40,19 @@ export default async function RootLayout({
         className={`${space.variable} ${rodetta.variable} font-space bg-neutral`}
       >
         {" "}
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
-          <Navbar
-            links={navContent[0]?.data.links}
-            logoSrc={navContent[0]?.data.logo}
-            showThemeToggler={navContent[0]?.data.showThemeToggler}
-          />
-          {children}
-        </ThemeProvider>
+        > */}
+        <Navbar
+          links={navContent[0]?.data.links}
+          logoSrc={navContent[0]?.data.logo}
+          showThemeToggler={navContent[0]?.data.showThemeToggler}
+        />
+        {children}
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
