@@ -2,12 +2,24 @@ import Button from "@/components/Standard/Button";
 import CustomLink from "@/components/Standard/CustomLink";
 import Text from "@/components/Standard/Text";
 import Title from "@/components/Standard/Title";
+import Banner from "@/components/molecules/banner/Banner";
 import SectionCard from "@/components/molecules/SectionCard";
 import SectionTitle from "@/components/ui/SectionTitle";
 export default function age() {
   return (
     <>
-      <div className="pt-20 mx-20">
+      <div className="">
+        <Banner
+          bannerType="links"
+          imageUrl="/images/placeholder.svg"
+          alt="placeholder"
+          title="Judith van Dorp"
+          items={[
+            { title: "Buitenavonturen", url: "localhost:3000/components" },
+            { title: "Projecten", url: "localhost:3000/components" },
+            { title: "Coaching", url: "localhost:3000/components" },
+          ]}
+        />
         <Title text="Title van iets" order={2} />
         <br></br>
         <Button text="Button" />
