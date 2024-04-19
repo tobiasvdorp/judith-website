@@ -32,6 +32,10 @@ const config = {
         rodetta: ["var(--font-rodetta)", "serif"],
       },
 
+      dropShadow: {
+        text: "3px 3px 4px rgba(0, 0, 0, 1)",
+      },
+
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
