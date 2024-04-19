@@ -23,7 +23,13 @@ export default function Title({ text, order, className }: TitleProps) {
       : `text-base`;
 
   return (
-    <Tag className={twMerge(`font-rodetta`, defaultTextSize, className)}>
+    <Tag
+      className={twMerge(
+        `font-rodetta text-black opacity-90`,
+        defaultTextSize,
+        className
+      )}
+    >
       {text}
     </Tag>
   );

@@ -3,6 +3,7 @@ import CustomLink from "@/components/Standard/CustomLink";
 import Text from "@/components/Standard/Text";
 import Title from "@/components/Standard/Title";
 import SectionCard from "@/components/molecules/SectionCard";
+import SectionTitle from "@/components/ui/SectionTitle";
 export default function age() {
   return (
     <>
@@ -30,6 +31,7 @@ export default function age() {
             Contact
           </CustomLink>
         </div>
+        <SectionTitle title="Section Title" />
       </div>
     </>
   );

@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, m, motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import CustomLink from "../Standard/CustomLink";
 
 type NavContent = {
@@ -16,15 +16,16 @@ type NavContent = {
     label: string;
   }[];
   logoSrc: string;
-  showThemeToggler: boolean;
+  // showThemeToggler: boolean;
 };
 export default function Navbar({
   links,
   logoSrc,
-  showThemeToggler,
-}: NavContent) {
+}: // showThemeToggler,
+NavContent) {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
+
   const sidebar = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "100%" },
@@ -34,19 +35,23 @@ export default function Navbar({
     <nav className="py-2 bg-neutral shadow-md px-4 fixed w-screen z-10 h-[69px]">
       {/* Desktop navbar */}
       <div className="w-full justify-between items-center max-w-screen-lg mx-auto hidden md:flex">
-        <Image
-          src={logoSrc}
-          alt="logo"
-          width={40}
-          height={40}
-          priority={true}
-        />
+        <Link href="/">
+          <Image
+            src={logoSrc}
+            alt="logo"
+            width={40}
+            height={40}
+            priority={true}
+          />
+        </Link>
         <div className="flex justify-between lg:max-w-[575px] md:max-w-[490px] w-full">
           {links.map((link, index) => (
             <Link
               key={index}
               href={link.url}
-              className="text-gray-800 hover:text-blue-500"
+              className={`${
+                pathname === link.url ? "text-red-700" : "text-black"
+              }`}
             >
               {link.label}
             </Link>
@@ -56,18 +61,20 @@ export default function Navbar({
           <CustomLink linkType="button" href="/contact">
             Contact
           </CustomLink>
-          {showThemeToggler && <ModeToggle />}
+          {/* {showThemeToggler && <ModeToggle />} */}
         </div>
       </div>
       {/* Mobile navbar */}
       <div className="flex justify-between items-center w-full md:hidden ">
-        <Image
-          src={logoSrc}
-          alt="logo"
-          width={40}
-          height={40}
-          priority={true}
-        />
+        <Link href="/">
+          <Image
+            src={logoSrc}
+            alt="logo"
+            width={40}
+            height={40}
+            priority={true}
+          />
+        </Link>
         <Menu
           className="text-gray-800"
           size={30}
@@ -119,7 +126,7 @@ export default function Navbar({
                   <CustomLink linkType="button" href="/contact">
                     Contact
                   </CustomLink>
-                  {showThemeToggler && <ModeToggle />}
+                  {/* {showThemeToggler && <ModeToggle />} */}
                 </div>
               </ul>
             </motion.div>
