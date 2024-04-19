@@ -49,7 +49,7 @@ export default async function RootLayout({
         <Navbar
           links={navContent[0]?.data.links}
           logoSrc={navContent[0]?.data.logo}
-          showThemeToggler={navContent[0]?.data.showThemeToggler}
+          // showThemeToggler={navContent[0]?.data.showThemeToggler}
         />
         {children}
         {/* </ThemeProvider> */}
