@@ -47,8 +47,8 @@ export default async function RootLayout({
           disableTransitionOnChange
         > */}
         <Navbar
-          links={navContent[0]?.data.links}
-          logoSrc={navContent[0]?.data.logo}
+          links={navContent[0]?.data?.links ?? []}
+          logoSrc={navContent[0]?.data?.logo ?? ""}
           // showThemeToggler={navContent[0]?.data.showThemeToggler}
         />
         {children}
