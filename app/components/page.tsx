@@ -11,7 +11,7 @@ export default function age() {
       <div className="">
         <Banner
           bannerType="links"
-          imageUrl="/images/placeholder.svg"
+          imageUrl="/images/mountain.jpeg"
           alt="placeholder"
           title="Judith van Dorp"
           items={[
@@ -24,7 +24,7 @@ export default function age() {
         <br></br>
         <Button text="Button" />
         <br></br> <br></br>
-        <Text text="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." />
+        {/* <Text text="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." /> */}
         <br></br>
         <SectionCard
           imageSrc={"/images/placeholder.svg"}
@@ -44,6 +44,13 @@ export default function age() {
           </CustomLink>
         </div>
         <SectionTitle title="Section Title" />
+        <Text
+          text="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+          title="title"
+          showButton={true}
+          buttonText="Contact opnemen"
+          buttonRef="localhost:3000/components"
+        />
       </div>
     </>
   );
