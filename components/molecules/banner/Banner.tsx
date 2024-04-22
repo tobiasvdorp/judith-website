@@ -52,7 +52,7 @@ export default function Banner(props: BannerProps) {
 
                     <Link
                       href={item.url}
-                      className="drop-shadow-text text-white"
+                      className="text-normal drop-shadow-text text-white"
                     >
                       {item.title}
                     </Link>
@@ -65,8 +65,9 @@ export default function Banner(props: BannerProps) {
               {/* If the type is description, show description */}
               {props.bannerType === "description" && (
                 <Text
-                  className="text-3xl drop-shadow-text text-white"
+                  className="text-lg drop-shadow-text text-white"
                   text={props.description}
+                  showButton={false}
                 ></Text>
               )}
             </div>
