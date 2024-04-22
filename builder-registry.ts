@@ -1,9 +1,13 @@
 "use client";
 import { builder, Builder, withChildren } from "@builder.io/react";
+import Banner from "./components/molecules/banner/Banner";
 import Button from "./components/Standard/Button";
+import MainWrapper from "./components/layouts/MainWrapper";
 import Navbar from "./components/Navbar/NavBar";
 import Text from "./components/Standard/Text";
 import { ThemeProvider } from "./components/theme-provider";
+import WhatIDo from "./components/molecules/what-i-do/WhatIDo";
+import WhoIAm from "./components/molecules/WhoIAm";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -127,12 +131,10 @@ Builder.registerComponent(Text, {
       },
       required: true,
     },
-
     {
       name: "buttonText",
       type: "string",
       friendlyName: "Button text",
-
       showIf: `options.get('showButton') === true`,
       required: true,
     },
@@ -143,7 +145,6 @@ Builder.registerComponent(Text, {
       showIf: `options.get('showButton') === true`,
       required: true,
     },
-
     {
       name: "text",
       type: "string",
@@ -154,6 +155,148 @@ Builder.registerComponent(Text, {
       name: "title",
       type: "string",
       friendlyName: "Title",
+    },
+  ],
+});
+
+Builder.registerComponent(WhatIDo, {
+  name: "WhatIDo",
+  inputs: [
+    {
+      name: "description",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "sectionCards",
+      type: "list",
+      subFields: [
+        {
+          name: "imageSrc",
+          type: "file",
+          allowedFileTypes: ["png", "jpg", "webp", "svg", "jpeg"],
+          required: true,
+        },
+        {
+          name: "title",
+          type: "string",
+          required: true,
+        },
+        {
+          name: "description",
+          type: "string",
+          required: true,
+        },
+        {
+          name: "buttonRef",
+          type: "string",
+          required: true,
+        },
+      ],
+      meta: {
+        ts: "SectionCardProps[]",
+      },
+    },
+    {
+      name: "title",
+      type: "string",
+      required: true,
+    },
+  ],
+});
+
+Builder.registerComponent(Banner, {
+  name: "Banner",
+  inputs: [
+    {
+      name: "bannerType",
+      type: "string",
+      enum: ["links", "description"],
+      required: true,
+    },
+    {
+      name: "description",
+      type: "string",
+      showIf: `options.get('bannerType') === 'description'`,
+    },
+    {
+      name: "items",
+      type: "list",
+      subFields: [
+        {
+          name: "title",
+          type: "string",
+          required: true,
+        },
+        {
+          name: "url",
+          type: "string",
+          required: true,
+        },
+      ],
+      showIf: `options.get('bannerType') === 'links'`,
+    },
+    {
+      name: "imageUrl",
+      type: "file",
+      allowedFileTypes: ["png", "jpg", "webp", "svg", "jpeg"],
+      required: true,
+    },
+    {
+      name: "alt",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "title",
+      type: "string",
+      required: true,
+    },
+  ],
+});
+
+Builder.registerComponent(withChildren(MainWrapper), {
+  name: "MainWrapper",
+  inputs: [
+    {
+      name: "children",
+      type: "string",
+      hideFromUI: true,
+      meta: {
+        ts: "ReactNode",
+      },
+    },
+  ],
+});
+
+Builder.registerComponent(WhoIAm, {
+  name: "WhoIAm",
+  inputs: [
+    {
+      name: "image",
+      type: "file",
+      allowedFileTypes: ["png", "jpg", "webp", "svg", "jpeg"],
+      required: true,
+    },
+    {
+      name: "title",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "text",
+      type: "richText",
+      required: true,
+    },
+    {
+      name: "buttonText",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "buttonRef",
+      type: "string",
+      required: true,
     },
   ],
 });
