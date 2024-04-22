@@ -119,9 +119,41 @@ Builder.registerComponent(Text, {
   name: "Text",
   inputs: [
     {
+      name: "showButton",
+      type: "boolean",
+      friendlyName: "Show button",
+      meta: {
+        ts: "true",
+      },
+      required: true,
+    },
+
+    {
+      name: "buttonText",
+      type: "string",
+      friendlyName: "Button text",
+
+      showIf: `options.get('showButton') === true`,
+      required: true,
+    },
+    {
+      name: "buttonRef",
+      type: "string",
+      friendlyName: "Button ref",
+      showIf: `options.get('showButton') === true`,
+      required: true,
+    },
+
+    {
       name: "text",
       type: "string",
+      friendlyName: "Text",
       required: true,
+    },
+    {
+      name: "title",
+      type: "string",
+      friendlyName: "Title",
     },
   ],
 });
