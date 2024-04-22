@@ -32,8 +32,8 @@ export default function SectionCard({
         </div>
         <div className="flex flex-col gap-2 p-3">
           <Title text={title} order={3} />
-          <Text text={description} />
-          <CustomLink href={buttonRef} linkType="button">
+          <Text text={description} showButton={false} />
+          <CustomLink href={buttonRef} linkType="button" className="w-full">
             Meer bekijken
           </CustomLink>
         </div>

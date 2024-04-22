@@ -15,7 +15,13 @@ export default function Button({
   ...rest
 }: ButtonProps) {
   return (
-    <button className={twMerge("button", className)} {...rest}>
+    <button
+      className={twMerge(
+        "bg-primary hover:bg-primary-dark rounded-md duration-200 px-8 py-2 w-fit",
+        className
+      )}
+      {...rest}
+    >
       {text}
       {children}
     </button>
