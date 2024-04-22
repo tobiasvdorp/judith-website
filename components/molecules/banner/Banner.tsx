@@ -4,6 +4,7 @@ import Title from "@/components/Standard/Title";
 import Text from "@/components/Standard/Text";
 import React from "react";
 import Parallax from "./Parallax";
+import Arrow from "./Arrow";
 type BannerProps =
   | {
       bannerType: "links";
@@ -30,12 +31,14 @@ export default function Banner(props: BannerProps) {
     <>
       <header className="h-screen w-screen flex items-center justify-center">
         <Image src={props.imageUrl} alt={props.alt} fill objectFit="cover" />
+        <Arrow />
+
         <Parallax>
           <div className="md:px-10 px-3">
             <Title
               text={props.title}
               order={1}
-              className="sm:text-7xl text-6xl drop-shadow-md text-center"
+              className="sm:text-7xl text-6xl drop-shadow-text text-center text-neutral"
             />
             <div className="flex gap-x-3 gap-7-0 justify-center max-w-full flex-wrap">
               {/* If the type is links, show links */}
@@ -47,7 +50,10 @@ export default function Banner(props: BannerProps) {
                       <div className="relative">🌿</div>
                     )}
 
-                    <Link href={item.url} className="drop-shadow-md">
+                    <Link
+                      href={item.url}
+                      className="drop-shadow-text text-white"
+                    >
                       {item.title}
                     </Link>
                     {/* Show emoji if its the last one */}
@@ -58,7 +64,10 @@ export default function Banner(props: BannerProps) {
                 ))}
               {/* If the type is description, show description */}
               {props.bannerType === "description" && (
-                <Text className="text-3xl" text={props.description}></Text>
+                <Text
+                  className="text-3xl drop-shadow-text text-white"
+                  text={props.description}
+                ></Text>
               )}
             </div>
           </div>
