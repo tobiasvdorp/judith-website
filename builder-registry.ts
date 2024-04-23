@@ -163,9 +163,13 @@ Builder.registerComponent(WhatIDo, {
   name: "WhatIDo",
   inputs: [
     {
-      name: "description",
+      name: "title",
       type: "string",
       required: true,
+    },
+    {
+      name: "description",
+      type: "string",
     },
     {
       name: "sectionCards",
@@ -196,11 +200,6 @@ Builder.registerComponent(WhatIDo, {
       meta: {
         ts: "SectionCardProps[]",
       },
-    },
-    {
-      name: "title",
-      type: "string",
-      required: true,
     },
   ],
 });
