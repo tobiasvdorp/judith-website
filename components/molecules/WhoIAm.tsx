@@ -11,21 +11,22 @@ type WhoIAmProps = {
 export default function WhoIAm(props: WhoIAmProps) {
   return (
     <>
-      <div className=" flex flex-col sm:flex-row gap-5 max-w-[700px] self-center items-center justify-center h-fit">
-        <Image
-          src={props.image}
-          alt={"profielfoto"}
-          width={160}
-          height={200}
-          sizes="(max-width: 640px) 160px, 160px"
-        />
-
+      <div className=" flex flex-col sm:flex-row gap-10 max-w-[800px] self-center items-center justify-center h-fit py-14">
+        <div className="w-full h-52 relative">
+          <Image
+            src={props.image}
+            alt={"profielfoto"}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
         <Text
           text={props.text}
           title={props.title}
           showButton={true}
           buttonRef={props.buttonRef}
           buttonText={props.buttonText}
+          className="leading-loose"
         />
       </div>
     </>
