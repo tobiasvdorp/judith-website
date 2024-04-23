@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -18,7 +18,7 @@ export default function Arrow() {
   }, []);
   return (
     <>
-      <div className="absolute bottom-5 pl-8 invert">
+      <div className="absolute -bottom-4 pl-8 invert">
         <AnimatePresence>
           {showArrow && (
             <motion.div
