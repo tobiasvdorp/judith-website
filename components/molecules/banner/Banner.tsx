@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import Title from "@/components/Standard/Title";
 import Text from "@/components/Standard/Text";
@@ -30,7 +30,13 @@ export default function Banner(props: BannerProps) {
   return (
     <>
       <header className="h-screen w-screen flex items-center justify-center">
-        <Image src={props.imageUrl} alt={props.alt} fill objectFit="cover" />
+        <Image
+          src={props.imageUrl}
+          alt={props.alt}
+          layout="fill"
+          objectFit="cover"
+          priority={true}
+        />
         <Arrow />
 
         <Parallax>
