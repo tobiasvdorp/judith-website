@@ -1,6 +1,6 @@
 "use client";
 import { Builder } from "@builder.io/react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Button from "../Standard/Button";
 import ModeToggle from "../ThemeSwitcher";
 import { Menu, X } from "lucide-react";

@@ -13,21 +13,21 @@ export default function Title({ text, order, className }: TitleProps) {
     order === 1
       ? `text-4xl`
       : order === 2
-      ? `text-3xl`
-      : order === 3
-      ? `text-2xl`
-      : order === 4
-      ? `text-xl`
-      : order === 5
-      ? `text-lg`
-      : `text-base`;
+        ? `text-3xl`
+        : order === 3
+          ? `text-2xl`
+          : order === 4
+            ? `text-xl`
+            : order === 5
+              ? `text-lg`
+              : `text-base`;
 
   return (
     <Tag
       className={twMerge(
         `font-rodetta text-black opacity-90`,
         defaultTextSize,
-        className
+        className,
       )}
     >
       {text}
