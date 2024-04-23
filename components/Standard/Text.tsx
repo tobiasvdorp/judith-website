@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 import Title from "./Title";
 import CustomLink from "./CustomLink";
 
-type TextProps = {
+export type TextProps = {
   text: string;
   className?: string;
   title?: string;
