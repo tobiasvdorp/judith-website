@@ -1,28 +1,58 @@
 "use client";
 import { Builder } from "@builder.io/react";
 import Image from "next/legacy/image";
-import Button from "../Standard/Button";
-import ModeToggle from "../ThemeSwitcher";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, m, motion } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import CustomLink from "../Standard/CustomLink";
+import ModeToggle from "../ThemeSwitcher";
+import { Menu, X } from "lucide-react";
+
+type NavLink = {
+  url: string;
+  label: string;
+};
 
 type NavContent = {
-  links: {
-    url: string;
-    label: string;
-  }[];
+  links: NavLink[];
   logoSrc: string;
-  // showThemeToggler: boolean;
 };
-export default function Navbar({
+
+const NavLinks = ({
   links,
-  logoSrc,
-}: // showThemeToggler,
-NavContent) {
+  pathname,
+}: {
+  links: NavLink[];
+  pathname: string;
+}) => (
+  <>
+    {links.map(({ url, label }, index) => (
+      <motion.li
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+          delay: 0.1 + index / 10,
+        }}
+        key={index}
+        className="md:p-0 p-4"
+      >
+        <Link
+          key={index}
+          href={url}
+          className={`${pathname === url ? "text-red-700" : "text-black"}`}
+        >
+          {label}
+        </Link>
+      </motion.li>
+    ))}
+  </>
+);
+
+export default function Navbar({ links, logoSrc }: NavContent) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -32,101 +62,61 @@ NavContent) {
   };
 
   return (
-    <nav className="py-2 bg-neutral shadow-md px-4 fixed w-screen z-10 h-[69px]">
+    <nav className="py-2 bg-neutral shadow-md px-4 fixed w-screen z-10 h-[69px] list-none	">
       {/* Desktop navbar */}
-      <div className="w-full justify-between items-center max-w-screen-lg mx-auto hidden md:flex">
-        <Link href="/">
-          <Image
-            src={logoSrc}
-            alt="logo"
-            width={40}
-            height={40}
-            priority={true}
-          />
+      <div className="w-full h-full justify-between items-center max-w-screen-lg mx-auto hidden md:flex">
+        <Link href="/" className="h-full w-20 relative">
+          <Image src={logoSrc} alt="logo" layout="fill" objectFit="contain" />
         </Link>
         <div className="flex justify-between lg:max-w-[575px] md:max-w-[490px] w-full">
-          {links.map((link, index) => (
-            <Link
-              key={index}
-              href={link.url}
-              className={`${
-                pathname === link.url ? "text-red-700" : "text-black"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <NavLinks links={links} pathname={pathname} />
         </div>
         <div className="flex items-center gap-2">
           <CustomLink linkType="button" href="/contact">
             Contact
           </CustomLink>
-          {/* {showThemeToggler && <ModeToggle />} */}
         </div>
       </div>
       {/* Mobile navbar */}
-      <div className="flex justify-between items-center w-full md:hidden ">
-        <Link href="/">
-          <Image
-            src={logoSrc}
-            alt="logo"
-            width={40}
-            height={40}
-            priority={true}
-          />
+      <div className="flex justify-between items-center w-full h-full md:hidden">
+        <Link href="/" className="h-full w-20 relative">
+          <Image src={logoSrc} alt="logo" layout="fill" objectFit="contain" />
         </Link>
-        <Menu
-          className="text-gray-800"
-          size={30}
-          onClick={() => setIsOpen(!isOpen)}
-        />
+        {isOpen ? (
+          <X
+            size="24"
+            className="text-black"
+            onClick={() => setIsOpen(false)}
+          />
+        ) : (
+          <Menu
+            size="24"
+            className="text-black"
+            onClick={() => setIsOpen(true)}
+          />
+        )}
       </div>
-
       <AnimatePresence>
         {isOpen && (
           <>
             <div
               className="h-screen w-screen"
               onClick={() => setIsOpen(false)}
-            ></div>
+            />
             <motion.div
-              className="fixed top-[69px] right-0 w-72 h-full bg-neutral z-50 shadow-lg md:hidden"
+              className="fixed top-[69px] right-0 w-full max-w-80 h-full bg-neutral z-50 shadow-lg md:hidden"
               initial="closed"
               animate={isOpen ? "open" : "closed"}
               exit="closed"
               variants={sidebar}
               transition={{ duration: 0.3 }}
             >
-              <ul className="flex flex-col gap-6 p-4">
-                {links.map((link, index) => (
-                  <motion.li
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 260,
-                      damping: 20,
-                      delay: 0.1 + index / 10,
-                    }}
-                    key={index}
-                  >
-                    <Link
-                      key={index}
-                      href={link.url}
-                      className={`text-black
-                      // TODO: add router path
-                       `}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.li>
-                ))}
-                <div className="flex items-center gap-2">
-                  {" "}
+              <ul className="flex flex-col p-6 md:p-8 divide-y">
+                <NavLinks links={links} pathname={pathname} />
+                <div className="flex items-center gap-2 pt-4">
                   <CustomLink linkType="button" href="/contact">
                     Contact
                   </CustomLink>
-                  {/* {showThemeToggler && <ModeToggle />} */}
                 </div>
               </ul>
             </motion.div>
