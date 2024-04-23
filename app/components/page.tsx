@@ -3,7 +3,7 @@ import CustomLink from "@/components/Standard/CustomLink";
 import Text from "@/components/Standard/Text";
 import Title from "@/components/Standard/Title";
 import Banner from "@/components/molecules/banner/Banner";
-import SectionCard from "@/components/molecules/SectionCard";
+import SectionCard from "@/components/molecules/what-i-do/SectionCard";
 import SectionTitle from "@/components/ui/SectionTitle";
 export default function age() {
   return (
