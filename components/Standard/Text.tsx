@@ -9,21 +9,22 @@ export type TextProps = {
 } & (ShowButton | NoButton);
 
 type ShowButton = {
-  showButton: true;
+  showButton?: true;
   buttonText: string;
   buttonRef: string;
 };
 type NoButton = {
-  showButton: false;
+  showButton?: false | undefined;
 };
 
 export default function Text(props: TextProps) {
   return (
     <div className="">
       {props.title && <Title text={props.title} order={2} />}
-      <p className={twMerge(`font-space pb-2`, props.className)}>
-        {props.text}
-      </p>
+      <div
+        className={twMerge(`font-space pb-2  `, props.className)}
+        dangerouslySetInnerHTML={{ __html: props.text }}
+      ></div>
       {props.showButton && (
         <CustomLink href={props.buttonRef} linkType="button" className="ml-3">
           {props.buttonText}

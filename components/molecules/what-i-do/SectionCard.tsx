@@ -26,7 +26,7 @@ export default function SectionCard(props: SectionCardProps) {
         </div>
         <div className="flex flex-col gap-2 p-3">
           <Title text={props.title} order={3} />
-          <Text text={props.description} showButton={false} />
+          <Text text={props.description} />
           <CustomLink
             href={props.buttonRef}
             linkType="button"

@@ -73,7 +73,6 @@ export default function Banner(props: BannerProps) {
                 <Text
                   className="text-lg drop-shadow-text text-white"
                   text={props.description}
-                  showButton={false}
                 ></Text>
               )}
             </div>
