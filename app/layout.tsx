@@ -54,6 +54,7 @@ export default async function RootLayout({
         />
         {children}
         {/* </ThemeProvider> */}
+        <Analytics />
       </body>
     </html>
   );

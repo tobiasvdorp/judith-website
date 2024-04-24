@@ -66,6 +66,7 @@ export default async function BlogArticle(props: PageProps) {
               alt="alt"
               layout="fill"
               objectFit="cover"
+              priority={true}
             />
           </div>
           <div className="">
