@@ -74,7 +74,7 @@ export default async function BlogArticle(props: PageProps) {
           </div>
           <Text
             text={content.data.shortText}
-            className="font-semibold text-lg "
+            className="font-semibold text-lg"
           />
 
           <RenderBuilderContent content={content} model="blogpost" />
