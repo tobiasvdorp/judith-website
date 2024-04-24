@@ -11,7 +11,7 @@ type WhoIAmProps = {
 export default function WhoIAm(props: WhoIAmProps) {
   return (
     <>
-      <div className=" flex flex-col sm:flex-row gap-10 max-w-[800px] self-center items-center justify-center h-fit py-14">
+      <div className=" flex flex-col sm:flex-row gap-10 max-w-[800px] self-center items-center justify-center h-fit pb-14">
         <div className="sm:w-full sm:h-52 sm:min-w-40 relative w-52 h-60 ">
           <Image
             src={props.image}
