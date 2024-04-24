@@ -1,12 +1,19 @@
+import { twMerge } from "tailwind-merge";
 import Title from "../Standard/Title";
 
 type SectionTitle = {
   title: string;
+  className?: string;
 };
-export default function SectionTitle({ title }: SectionTitle) {
+export default function SectionTitle({ title, className }: SectionTitle) {
   return (
     <>
-      <div className="w-full flex flex-row items-center">
+      <div
+        className={twMerge(
+          "w-full flex flex-row justify-center items-center",
+          className
+        )}
+      >
         {/* Line */}
         <hr className="w-full text-center border border-black opacity-70" />
         {/* Title */}
