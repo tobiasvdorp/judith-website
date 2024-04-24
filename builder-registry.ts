@@ -119,46 +119,6 @@ Builder.registerComponent(Navbar, {
   ],
 });
 
-Builder.registerComponent(Text, {
-  name: "Text",
-  inputs: [
-    {
-      name: "showButton",
-      type: "boolean",
-      friendlyName: "Show button",
-      meta: {
-        ts: "true",
-      },
-      required: true,
-    },
-    {
-      name: "buttonText",
-      type: "string",
-      friendlyName: "Button text",
-      showIf: `options.get('showButton') === true`,
-      required: true,
-    },
-    {
-      name: "buttonRef",
-      type: "string",
-      friendlyName: "Button ref",
-      showIf: `options.get('showButton') === true`,
-      required: true,
-    },
-    {
-      name: "text",
-      type: "string",
-      friendlyName: "Text",
-      required: true,
-    },
-    {
-      name: "title",
-      type: "string",
-      friendlyName: "Title",
-    },
-  ],
-});
-
 Builder.registerComponent(WhatIDo, {
   name: "WhatIDo",
   inputs: [
@@ -296,6 +256,45 @@ Builder.registerComponent(WhoIAm, {
       name: "buttonRef",
       type: "string",
       required: true,
+    },
+  ],
+});
+
+Builder.registerComponent(Text, {
+  name: "Text",
+  inputs: [
+    {
+      name: "title",
+      type: "string",
+      friendlyName: "Title",
+    },
+    {
+      name: "text",
+      type: "richText",
+      friendlyName: "Text",
+      required: true,
+    },
+    {
+      name: "showButton",
+      type: "boolean",
+      defaultValue: false,
+      friendlyName: "Show button",
+      meta: {
+        ts: "true",
+      },
+      required: true,
+    },
+    {
+      name: "buttonText",
+      type: "string",
+      friendlyName: "Button text",
+      showIf: `options.get('showButton') === true`,
+    },
+    {
+      name: "buttonRef",
+      type: "string",
+      friendlyName: "Button ref",
+      showIf: `options.get('showButton') === true`,
     },
   ],
 });
