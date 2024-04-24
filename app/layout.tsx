@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar/NavBar";
 import { Space_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
 import { builder } from "@builder.io/sdk";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 const space = Space_Grotesk({
   weight: ["400"],
   variable: "--font-space",
@@ -55,6 +55,7 @@ export default async function RootLayout({
         {children}
         {/* </ThemeProvider> */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
