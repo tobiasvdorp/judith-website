@@ -46,8 +46,6 @@ export default async function BlogArticle(props: PageProps) {
     })
     .toPromise();
 
-  console.log(content);
-
   const formattedDate = new Date(content.data.date).toLocaleDateString(
     "Nl-nl",
     {

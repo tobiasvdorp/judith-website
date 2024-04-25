@@ -28,7 +28,6 @@ export default async function Page(props: PageProps) {
     fields: "id,data.title,data.shortText,data.url",
   })) as BlogPost[];
 
-  console.log(blogposts);
   return (
     <MainWrapper>
       <div>
