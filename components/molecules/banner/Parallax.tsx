@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
 
-// Parallax effect
 export default function Parallax({ children }: { children: React.ReactNode }) {
   const [offsetY, setOffsetY] = React.useState(0);
-  const handleScroll = () => setOffsetY(window.scrollY);
+
+  const handleScroll = () => {
+    window.requestAnimationFrame(() => setOffsetY(window.scrollY));
+  };
 
   React.useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -16,6 +18,8 @@ export default function Parallax({ children }: { children: React.ReactNode }) {
     <div
       style={{
         transform: `translateY(${offsetY * 0.4}px)`,
+        willChange: "transform",
+        transition: "transform 0.1s ease-out",
       }}
     >
       {children}
