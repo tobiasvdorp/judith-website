@@ -28,18 +28,7 @@ const NavLinks = ({
 }) => (
   <>
     {links.map(({ url, label }, index) => (
-      <motion.li
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-          delay: 0.1 + index / 10,
-        }}
-        key={index}
-        className="md:p-0 p-4"
-      >
+      <li key={index} className="md:p-0 p-4">
         <Link
           key={index}
           href={url}
@@ -47,7 +36,7 @@ const NavLinks = ({
         >
           {label}
         </Link>
-      </motion.li>
+      </li>
     ))}
   </>
 );
@@ -68,9 +57,9 @@ export default function Navbar({ links, logoSrc }: NavContent) {
         <Link href="/" className="h-full w-20 relative">
           <Image src={logoSrc} alt="logo" layout="fill" objectFit="contain" />
         </Link>
-        <div className="flex justify-between lg:max-w-[575px] md:max-w-[490px] w-full">
+        <ul className="flex justify-between lg:max-w-[575px] md:max-w-[490px] w-full">
           <NavLinks links={links} pathname={pathname} />
-        </div>
+        </ul>
         <div className="flex items-center gap-2">
           <CustomLink linkType="button" href="/contact">
             Contact
