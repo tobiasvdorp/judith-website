@@ -1,5 +1,6 @@
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "../../components/builder";
+import NotFound from "./not-found";
 
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
@@ -23,6 +24,10 @@ export default async function Page(props: PageProps) {
     })
     // Convert the result to a promise
     .toPromise();
+
+  if (!content) {
+    return NotFound();
+  }
 
   return (
     <>
