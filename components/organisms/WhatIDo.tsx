@@ -1,5 +1,7 @@
 import SectionTitle from "@/components/ui/SectionTitle";
-import SectionCard, { SectionCardProps } from "./SectionCard";
+import SectionCard, {
+  SectionCardProps,
+} from "../molecules/what-i-do/SectionCard";
 import Text from "@/components/Standard/Text";
 
 type WhatIDoProps = {
