@@ -1,19 +1,23 @@
-import { Content, fetchOneEntry, getBuilderSearchParams } from '@builder.io/sdk-react-nextjs';
+import {
+  Content,
+  fetchOneEntry,
+  getBuilderSearchParams,
+} from "@builder.io/sdk-react-nextjs";
 
 interface MyPageProps {
   params: {
-    slug: string[];
+    page: string[];
   };
   searchParams: Record<string, string>;
 }
 
-const apiKey = '460155f6fa9349239ac51ff1c9bdfe59';
+const apiKey = "87f7e6ddda884039ad862d083035a471";
 
 export default async function Page(props: MyPageProps) {
-  const urlPath = '/' + (props.params?.slug?.join('/') || '');
+  const urlPath = "/" + (props.params?.page?.join("/") || "");
 
   const content = await fetchOneEntry({
-    model: 'page',
+    model: "page",
     apiKey,
     options: getBuilderSearchParams(props.searchParams),
     userAttributes: { urlPath },

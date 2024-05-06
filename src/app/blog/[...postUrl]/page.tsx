@@ -1,5 +1,9 @@
-import { loadComponents } from '@/app/componentsConfig';
-import { Content, fetchOneEntry, getBuilderSearchParams } from '@builder.io/sdk-react-nextjs';
+import { loadComponents } from "@/app/componentsConfig";
+import {
+  Content,
+  fetchOneEntry,
+  getBuilderSearchParams,
+} from "@builder.io/sdk-react-nextjs";
 
 // type MyPageProps = {
 //   params: {
@@ -9,15 +13,15 @@ import { Content, fetchOneEntry, getBuilderSearchParams } from '@builder.io/sdk-
 //   title: string;
 // };
 
-const apiKey = '460155f6fa9349239ac51ff1c9bdfe59';
+const apiKey = "87f7e6ddda884039ad862d083035a471";
 
 export default async function Page(props: any) {
   const customComponents = await loadComponents();
 
-  const urlPath = '/' + (props.params?.postUrl?.join('/') || '');
+  const urlPath = "/" + (props.params?.postUrl?.join("/") || "");
 
   const content = await fetchOneEntry({
-    model: 'blogpost',
+    model: "blogpost",
     apiKey,
     options: getBuilderSearchParams(props.searchParams),
     userAttributes: { urlPath },
