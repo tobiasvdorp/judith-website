@@ -1,6 +1,6 @@
 import Title from "@/components/Standard/Title";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import CustomLink from "@/components/Standard/CustomLink";
 import Text from "@/components/Standard/Text";
 export default function NotFound() {
@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="h-screen w-screen flex items-center justify-center">
       <div className="flex gap-2 text-center flex-col items-center max-w-[28rem]">
         <div className="relative w-full h-20 mb-4">
-          <Image src="/images/forest.png" alt="Bomen" fill />
+          <Image src="/images/forest.png" alt="Bomen" layout="fill" />
         </div>
         <Title order={1} text="404 - Oeps!" />
         <Text

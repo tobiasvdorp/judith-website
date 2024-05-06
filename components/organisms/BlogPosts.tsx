@@ -1,20 +1,8 @@
-import React from "react";
 import { builder } from "@builder.io/sdk";
-import MainWrapper from "@/components/layouts/MainWrapper";
 import Link from "next/link";
 
-// Replace with your Public API Key
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
-
-interface PageProps {
-  params: {
-    page: string[];
-  };
-}
-
-export type BlogPost = {
+type BlogPost = {
   id: string;
-
   data: {
     mainImage: string;
     shortText: string;
@@ -23,13 +11,19 @@ export type BlogPost = {
   };
 };
 
-export default async function Page(props: PageProps) {
+type BlogPostsProps = {
+  blogposts: BlogPost[];
+  title: string;
+  shortText: string;
+};
+export default async function BlogPosts(props: BlogPostsProps) {
   const blogposts = (await builder.getAll("blogpost", {
     fields: "id,data.title,data.shortText,data.url",
   })) as BlogPost[];
 
   return (
-    <MainWrapper>
+    <>
+      <h1>{props.title}</h1>
       <div>
         {blogposts.map((blogpost: BlogPost) => (
           <Link href={`/blog/${blogpost?.data?.url}`} key={blogpost.id}>
@@ -37,6 +31,6 @@ export default async function Page(props: PageProps) {
           </Link>
         ))}
       </div>
-    </MainWrapper>
+    </>
   );
 }

@@ -1,13 +1,15 @@
 "use client";
 import { builder, Builder, withChildren } from "@builder.io/react";
 import Banner from "./components/molecules/banner/Banner";
+import BlogPost from "./components/layouts/BlogPost";
+import BlogPosts from "./components/organisms/BlogPosts";
 import Button from "./components/Standard/Button";
 import MainWrapper from "./components/layouts/MainWrapper";
 import Navbar from "./components/Navbar/NavBar";
 import Text from "./components/Standard/Text";
 import { ThemeProvider } from "./components/theme-provider";
-import WhatIDo from "./components/molecules/what-i-do/WhatIDo";
-import WhoIAm from "./components/molecules/WhoIAm";
+import WhatIDo from "./components/organisms/WhatIDo";
+import WhoIAm from "./components/organisms/WhoIAm";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -19,64 +21,6 @@ Builder.registerComponent(Button, {
       name: "text",
       type: "string",
       required: true,
-    },
-  ],
-});
-
-Builder.registerComponent(withChildren(ThemeProvider), {
-  name: "ThemeProvider",
-  inputs: [
-    {
-      name: "attribute",
-      type: "string",
-    },
-    {
-      name: "children",
-      type: "string",
-      hideFromUI: true,
-      meta: {
-        ts: "ReactNode",
-      },
-    },
-    {
-      name: "defaultTheme",
-      type: "string",
-    },
-    {
-      name: "disableTransitionOnChange",
-      type: "boolean",
-    },
-    {
-      name: "enableColorScheme",
-      type: "boolean",
-    },
-    {
-      name: "enableSystem",
-      type: "boolean",
-    },
-    {
-      name: "forcedTheme",
-      type: "string",
-    },
-    {
-      name: "storageKey",
-      type: "string",
-    },
-    {
-      name: "themes",
-      type: "object",
-      hideFromUI: true,
-      meta: {
-        ts: "string[]",
-      },
-    },
-    {
-      name: "value",
-      type: "object",
-      hideFromUI: true,
-      meta: {
-        ts: "ValueObject",
-      },
     },
   ],
 });
@@ -295,6 +239,56 @@ Builder.registerComponent(Text, {
       type: "string",
       friendlyName: "Button ref",
       showIf: `options.get('showButton') === true`,
+    },
+  ],
+});
+
+Builder.registerComponent(BlogPosts, {
+  name: "BlogPosts",
+  inputs: [
+    {
+      name: "shortText",
+      type: "longText",
+      required: true,
+    },
+    {
+      name: "title",
+      type: "string",
+      required: true,
+    },
+  ],
+});
+
+Builder.registerComponent(withChildren(BlogPost), {
+  name: "BlogPost",
+  inputs: [
+    {
+      name: "children",
+      type: "string",
+      hideFromUI: true,
+      meta: {
+        ts: "ReactNode",
+      },
+    },
+    {
+      name: "date",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "mainImage",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "shortText",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "title",
+      type: "string",
+      required: true,
     },
   ],
 });
