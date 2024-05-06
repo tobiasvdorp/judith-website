@@ -1,16 +1,12 @@
-import BuilderDevTools from "@builder.io/dev-tools/next";
-
 /** @type {import('next').NextConfig} */
-const nextConfig = BuilderDevTools()({
+const nextConfig = {
+  /**
+   * This setting is required for Builder's Visual Editor to work with your site.
+   */
+  transpilePackages: ["@builder.io/sdk-react-nextjs"],
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.builder.io",
-        port: "",
-      },
-    ],
+    domains: ["cdn.builder.io"],
   },
-});
+};
 
-export default nextConfig;
+module.exports = nextConfig;
