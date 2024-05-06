@@ -33,7 +33,7 @@ export default async function RootLayout({
     apiKey,
     model: "navigation-links",
   });
-  console.log(navContent);
+
   return (
     <html lang="en">
       <body
