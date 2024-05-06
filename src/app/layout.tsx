@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import Navbar from "@/app/components/NavBar";
+import Navbar from "@/app/components/Navbar/NavBar";
 import { Space_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
 import { SpeedInsights } from "@vercel/speed-insights/next";

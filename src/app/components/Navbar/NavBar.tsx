@@ -1,11 +1,12 @@
 "use client";
+import { Builder } from "@builder.io/react";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import CustomLink from "@/app/components/standard/CustomLink";
-
+import CustomLink from "../Standard/CustomLink";
+import ModeToggle from "../ThemeSwitcher";
 import { Menu, X } from "lucide-react";
 
 type NavLink = {
