@@ -3,6 +3,7 @@ import SectionCard, {
   SectionCardProps,
 } from "../molecules/what-i-do/SectionCard";
 import Text from "@/components/Standard/Text";
+import MainWrapper from "../layouts/MainWrapper";
 
 type WhatIDoProps = {
   title: string;
@@ -20,10 +21,11 @@ export default function WhatIDo(props: WhatIDoProps) {
             <Text text={props.description} className="text-center max-w-96" />
           </div>
         )}
-        <div className="grid md:grid-cols-3 grid-cols-2 justify-items-center gap-5 pt-2">
-          {props.sectionCards.map((sectionCard, index) => (
-            <SectionCard key={index} {...sectionCard} />
-          ))}
+        <div className="grid lg:grid-cols-3 justify-items-center gap-5 pt-2 grid-cols-1 sm:grid-cols-2">
+          {props.sectionCards &&
+            props.sectionCards.map((sectionCard, index) => (
+              <SectionCard key={index} {...sectionCard} />
+            ))}
         </div>
       </div>
     </>
