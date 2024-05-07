@@ -3,6 +3,9 @@ import {
   fetchOneEntry,
   getBuilderSearchParams,
 } from "@builder.io/sdk-react-nextjs";
+// import { loadComponents } from "./componentsConfig";
+import { loadComponents } from "./componentsConfig";
+import Image from "next/legacy/image";
 
 interface MyPageProps {
   params: {
@@ -14,6 +17,8 @@ interface MyPageProps {
 const apiKey = "87f7e6ddda884039ad862d083035a471";
 
 export default async function Page(props: MyPageProps) {
+  const customComponents = await loadComponents();
+
   const urlPath = "/" + (props.params?.page?.join("/") || "");
 
   const content = await fetchOneEntry({
@@ -23,6 +28,15 @@ export default async function Page(props: MyPageProps) {
     userAttributes: { urlPath },
   });
 
-  return <Content content={content} model="page" apiKey={apiKey} />;
+  return (
+    <>
+      <Content
+        content={content}
+        model="page"
+        apiKey={apiKey}
+        customComponents={customComponents}
+      />
+    </>
+  );
 }
 export const revalidate = 1;
