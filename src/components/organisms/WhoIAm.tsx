@@ -4,6 +4,8 @@ import Image from "next/legacy/image";
 type WhoIAmProps = {
   image: string;
   className?: string;
+  text: string;
+  title?: string;
   buttonRef: string;
   buttonText: string;
 } & TextProps;

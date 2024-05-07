@@ -49,20 +49,21 @@ export default function Banner(props: BannerProps) {
             <div className="flex gap-x-3 gap-7-0 justify-center max-w-full flex-wrap">
               {/* If the type is links, show links */}
               {props.bannerType === "links" &&
-                props.items.map((item, index) => (
+                props.items?.map((item, index) => (
                   <div key={index} className="flex gap-3">
-                    {/* If its the first or last one, show emoji */}
                     {(index === 0 || props.items.length) && (
                       <div className="relative">🌿</div>
                     )}
 
-                    <Link
-                      href={item.url}
-                      className="text-normal drop-shadow-text text-white"
-                    >
-                      {item.title}
-                    </Link>
-                    {/* Show emoji if its the last one */}
+                    {item.url && (
+                      <Link
+                        href={item.url}
+                        className="text-normal drop-shadow-text text-white"
+                      >
+                        {item.title}
+                      </Link>
+                    )}
+
                     {index === props.items.length - 1 && (
                       <div className="relative">🌿</div>
                     )}

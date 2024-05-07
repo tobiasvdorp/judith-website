@@ -23,10 +23,14 @@ export default function Text(props: TextProps) {
       {props.title && <Title text={props.title} order={2} />}
       <div
         className={twMerge(`font-space pb-2  `, props.className)}
-        dangerouslySetInnerHTML={{ __html: props.text }}
+        dangerouslySetInnerHTML={{ __html: props.text || "" }}
       ></div>
       {props.showButton && (
-        <CustomLink href={props.buttonRef} linkType="button" className="ml-3">
+        <CustomLink
+          href={props.buttonRef || ""}
+          linkType="button"
+          className="ml-3"
+        >
           {props.buttonText}
         </CustomLink>
       )}

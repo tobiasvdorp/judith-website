@@ -33,7 +33,7 @@ export default function Arrow() {
                 width={100}
                 height={100}
                 className=" -rotate-[40deg] bent-arrow"
-              />{" "}
+              />
             </motion.div>
           )}
         </AnimatePresence>
