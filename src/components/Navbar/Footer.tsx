@@ -5,7 +5,9 @@ type Link = {
   url: string;
 };
 
-const socialLinks: Link[] = [
+type SocialLink = Link & { icon: string };
+
+const socialLinks: SocialLink[] = [
   { label: "Facebook", url: "https://www.facebook.com", icon: "url" },
   { label: "Instagram", url: "https://www.instagram.com", icon: "url" },
   { label: "Twitter", url: "https://www.twitter.com", icon: "url" },
@@ -54,6 +56,11 @@ const links: { label: string; links: Link[] }[] = [
     ],
   },
 ];
+
+type FooterProps = {
+  socialLinks: SocialLink[];
+  links: { label: string; links: Link[] }[];
+};
 
 export default function Footer({ socialLinks, links }: FooterProps) {
   return (
