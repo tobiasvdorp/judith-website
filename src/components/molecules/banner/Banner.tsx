@@ -5,25 +5,10 @@ import Text from "@/components/Standard/Text";
 import React from "react";
 import Parallax from "./Parallax";
 import Arrow from "./Arrow";
-type BannerProps =
-  | {
-      bannerType: "links";
-      items: BannerItem[];
-      imageUrl: string;
-      alt: string;
-      title: string;
-    }
-  | {
-      bannerType: "description";
-      description: string;
-      imageUrl: string;
-      alt: string;
-      title: string;
-    };
-
-type BannerItem = {
+type BannerProps = {
+  imageUrl: string;
   title: string;
-  url: string;
+  description?: string;
 };
 
 export default function Banner(props: BannerProps) {
@@ -32,7 +17,7 @@ export default function Banner(props: BannerProps) {
       <header className="h-screen w-screen flex items-center justify-center">
         <Image
           src={props.imageUrl}
-          alt={props.alt}
+          alt="banner"
           layout="fill"
           objectFit="cover"
           priority={true}
@@ -47,34 +32,11 @@ export default function Banner(props: BannerProps) {
               className="sm:text-7xl text-6xl drop-shadow-text text-center text-neutral"
             />
             <div className="flex gap-x-3 gap-7-0 justify-center max-w-full flex-wrap">
-              {/* If the type is links, show links */}
-              {props.bannerType === "links" &&
-                props.items?.map((item, index) => (
-                  <div key={index} className="flex gap-3">
-                    {(index === 0 || props.items.length) && (
-                      <div className="relative">🌿</div>
-                    )}
-
-                    {item.url && (
-                      <Link
-                        href={item.url}
-                        className="text-normal drop-shadow-text text-white"
-                      >
-                        {item.title}
-                      </Link>
-                    )}
-
-                    {index === props.items.length - 1 && (
-                      <div className="relative">🌿</div>
-                    )}
-                  </div>
-                ))}
-              {/* If the type is description, show description */}
-              {props.bannerType === "description" && (
+              {props.description && (
                 <Text
-                  className="text-lg drop-shadow-text text-white"
                   text={props.description}
-                ></Text>
+                  className="text-lg drop-shadow-text text-white"
+                />
               )}
             </div>
           </div>

@@ -3,9 +3,10 @@ import {
   fetchOneEntry,
   getBuilderSearchParams,
 } from "@builder.io/sdk-react-nextjs";
-// import { loadComponents } from "./componentsConfig";
+import NotFound from "@/app/[...page]/not-found";
+import MainWrapper from "@/components/layouts/MainWrapper";
+import Banner from "@/components/molecules/banner/Banner";
 import { loadComponents } from "./componentsConfig";
-import Image from "next/legacy/image";
 
 interface MyPageProps {
   params: {
@@ -18,7 +19,6 @@ const apiKey = "87f7e6ddda884039ad862d083035a471";
 
 export default async function Page(props: MyPageProps) {
   const customComponents = await loadComponents();
-
   const urlPath = "/" + (props.params?.page?.join("/") || "");
 
   const content = await fetchOneEntry({
@@ -28,14 +28,25 @@ export default async function Page(props: MyPageProps) {
     userAttributes: { urlPath },
   });
 
+  if (!content) {
+    return NotFound();
+  }
+
   return (
     <>
-      <Content
-        content={content}
-        model="page"
-        apiKey={apiKey}
-        customComponents={customComponents}
+      <Banner
+        imageUrl={content.data?.bannerImage}
+        title={content.data?.bannerTitle}
+        description={content.data?.bannerDescription}
       />
+      <MainWrapper>
+        <Content
+          content={content}
+          model="page"
+          apiKey={apiKey}
+          customComponents={customComponents}
+        />
+      </MainWrapper>
     </>
   );
 }
