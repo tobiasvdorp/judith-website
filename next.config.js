@@ -5,7 +5,12 @@ const nextConfig = {
    */
   transpilePackages: ["@builder.io/sdk-react-nextjs"],
   images: {
-    domains: ["cdn.builder.io"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.builder.io",
+      },
+    ],
   },
 };
 
