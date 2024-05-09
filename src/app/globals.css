@@ -46,6 +46,17 @@
   );
 }
 
+.prose a.button {
+  @apply no-underline h-10 hover:underline;
+}
 a {
   @apply hover:underline hover:underline-offset-4;
 }
+
+a:not(nav a):not(.button) {
+  @apply underline underline-offset-4;
+}
+
+/* .last-card .last-card-text {
+  @apply sm:h-fit md:h-64;
+} */

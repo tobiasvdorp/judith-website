@@ -1,8 +1,9 @@
 import Title from "@/components/Standard/Title";
 import Link from "next/link";
 import Image from "next/legacy/image";
-import CustomLink from "@/components/Standard/CustomLink";
+
 import Text from "@/components/Standard/Text";
+import Button from "@/components/Standard/Button";
 export default function NotFound() {
   return (
     <div className="h-screen w-screen flex items-center justify-center">
@@ -15,9 +16,7 @@ export default function NotFound() {
           text="Het lijkt erop dat deze pagina niet bestaat."
           className="text-xl"
         />
-        <CustomLink href="/" linkType="button" className="mt-4">
-          Naar home
-        </CustomLink>
+        <Button url="/" className="mt-4" text="Naar home"></Button>
       </div>
     </div>
   );

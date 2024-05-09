@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import CustomLink from "../Standard/CustomLink";
+
 import { Menu, X } from "lucide-react";
+import Button from "@/components/Standard/Button";
 
 type NavLink = {
   url: string;
@@ -59,9 +60,7 @@ export default function Navbar({ links, logoSrc }: NavContent) {
           <NavLinks links={links} pathname={pathname} />
         </ul>
         <div className="flex items-center gap-2">
-          <CustomLink linkType="button" href="/contact">
-            Contact
-          </CustomLink>
+          <Button url="/contact" text="Contact"></Button>
         </div>
       </div>
       {/* Mobile navbar */}
@@ -101,9 +100,7 @@ export default function Navbar({ links, logoSrc }: NavContent) {
               <ul className="flex flex-col p-6 md:p-8 divide-y">
                 <NavLinks links={links} pathname={pathname} />
                 <div className="flex items-center gap-2 pt-4">
-                  <CustomLink linkType="button" href="/contact">
-                    Contact
-                  </CustomLink>
+                  <Button url="/contact" text="contact"></Button>
                 </div>
               </ul>
             </motion.div>

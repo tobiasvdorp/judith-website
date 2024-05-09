@@ -72,6 +72,19 @@ const componentsConfig = [
         type: "string",
         required: true,
       },
+      {
+        name: "linkType",
+        type: "string",
+        defaultValue: "button",
+        hideFromUI: true,
+        required: true,
+      },
+      {
+        name: "href",
+        friendlyName: "URL",
+        type: "string",
+        required: true,
+      },
     ],
     isRSC: true,
   },
@@ -233,10 +246,6 @@ const componentsConfig = [
         type: "boolean",
         defaultValue: false,
         friendlyName: "Show button",
-        meta: {
-          ts: "true",
-        },
-        required: true,
       },
       {
         name: "buttonText",
@@ -247,7 +256,7 @@ const componentsConfig = [
       {
         name: "buttonRef",
         type: "string",
-        friendlyName: "Button ref",
+        friendlyName: "Button URL",
         showIf: `options.get('showButton') === true`,
       },
     ],
@@ -259,15 +268,8 @@ const componentsConfig = [
     inputs: [
       {
         name: "children",
-        type: "list",
-        subFields: [
-          {
-            name: "blocks",
-            type: "uiBlocks",
-          },
-        ],
+        type: "uiBlocks",
       },
-      // andere inputs zoals nodig
     ],
     isRSC: true,
   },

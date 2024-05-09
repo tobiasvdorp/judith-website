@@ -1,8 +1,9 @@
 import Image from "next/legacy/image";
 import Title from "@/components/Standard/Title";
 import Text from "@/components/Standard/Text";
-import CustomLink from "../../Standard/CustomLink";
+
 import { twMerge } from "tailwind-merge";
+import Button from "@/components/Standard/Button";
 
 export type SectionCardProps = {
   imageSrc: string;
@@ -36,13 +37,11 @@ export default function SectionCard(props: SectionCardProps) {
           <div className="h-fit last-card-text">
             <Text text={props.description} />
           </div>
-          <CustomLink
-            href={props.buttonRef}
-            linkType="button"
+          <Button
+            url={props.buttonRef}
             className="w-full"
-          >
-            Meer bekijken
-          </CustomLink>
+            text="Meer bekijken"
+          ></Button>
         </div>
       </div>
     </>
