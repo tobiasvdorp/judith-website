@@ -49,14 +49,10 @@
 .prose a.button {
   @apply no-underline h-10 hover:underline;
 }
-a {
+a:not(a.card) {
   @apply hover:underline hover:underline-offset-4;
 }
 
-a:not(nav a):not(.button) {
+a:not(nav a):not(.button):not(.card) {
   @apply underline underline-offset-4;
 }
-
-/* .last-card .last-card-text {
-  @apply sm:h-fit md:h-64;
-} */
