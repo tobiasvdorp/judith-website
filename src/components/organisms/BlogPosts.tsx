@@ -39,20 +39,18 @@ export default async function BlogPosts() {
                   alt="alt"
                   layout="fill"
                   objectFit="cover"
-                  className="group-hover:opacity-90 duration-200"
+                  className="group-hover:opacity-70 duration-200"
                 />
               </div>
 
               <div className="flex flex-col justify-between self-start p-4  duration-200 leading-normal relative w-full">
-                <div className="absolute top-0 right-2 opacity-55 ">
+                <div className="absolute -top-2 group-hover:-top-4 right-2 px-2 bg-neutral rounded-xl group-hover:bg-neutral-dark duration-75 ">
                   {post.data?.date}
                 </div>
-                <h2 className="font-rodetta text-xl font-bold group-hover:pl-2 duration-100">
+                <h2 className="font-rodetta text-xl font-bold  duration-100">
                   {post.data?.title}
                 </h2>
-                <p className="text-base group-hover:pl-3 duration-200">
-                  {post.data?.shortText}
-                </p>
+                <p className="text-base duration-200">{post.data?.shortText}</p>
               </div>
             </Link>
           </div>
