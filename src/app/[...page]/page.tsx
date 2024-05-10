@@ -31,7 +31,7 @@ export default async function Page(props: MyPageProps) {
   if (!content) {
     return NotFound();
   }
-  console.log(content);
+
   return (
     <>
       <Banner
