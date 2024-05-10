@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/legacy/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
@@ -48,6 +48,10 @@ export default function Navbar({ links, logoSrc }: NavContent) {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "100%" },
   };
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <nav className="py-2 bg-neutral shadow-md px-4 fixed w-screen z-10 h-[69px] list-none	">
