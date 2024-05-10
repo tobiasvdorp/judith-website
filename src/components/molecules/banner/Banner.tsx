@@ -20,7 +20,7 @@ export default function Banner(props: BannerProps) {
           alt="banner"
           layout="fill"
           objectFit="cover"
-          priority={true}
+          priority
         />
         <Arrow />
 
