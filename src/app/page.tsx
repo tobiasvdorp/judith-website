@@ -7,6 +7,7 @@ import NotFound from "@/app/[...page]/not-found";
 import MainWrapper from "@/components/layouts/MainWrapper";
 import Banner from "@/components/molecules/banner/Banner";
 import { loadComponents } from "./componentsConfig";
+import type { Metadata } from "next";
 
 interface MyPageProps {
   params: {
@@ -16,6 +17,26 @@ interface MyPageProps {
 }
 
 const apiKey = "87f7e6ddda884039ad862d083035a471";
+
+// Generate metadata for the homepage by fetching the homepage entry
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await fetchOneEntry({
+    model: "page",
+    apiKey,
+    options: {
+      fields: "data.title,data.description", // Specificeer welke velden je wilt ophalen
+    },
+    query: {
+      "data.title.$eq": "Home", // Zorg dat de query correct is geformatteerd
+    },
+  });
+
+  return {
+    title: content?.data?.title + " - Judith van Dorp" || "Home",
+    description: content?.data?.description || "Homepage",
+    // image: content?.data?.metaImage,
+  };
+}
 
 export default async function Page(props: MyPageProps) {
   const customComponents = await loadComponents();
