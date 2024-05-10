@@ -34,7 +34,14 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: content?.data?.title + " - Judith van Dorp" || "Home",
     description: content?.data?.description || "Homepage",
-    // image: content?.data?.metaImage,
+    // image: content?.data?.bannerImage,
+    openGraph: {
+      type: "website",
+      url: "https://judithvandorp.com",
+      title: content?.data?.title + " - Judith van Dorp" || "Home",
+      description: content?.data?.description || "Homepage",
+      // image: content?.data?.metaImage,
+    },
   };
 }
 
