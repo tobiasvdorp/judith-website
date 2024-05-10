@@ -199,12 +199,12 @@ const componentsConfig = [
         required: true,
         defaultValue: "/images/placeholder.png",
       },
-      {
-        name: "title",
-        type: "string",
-        required: true,
-        defaultValue: "Wie ben ik?",
-      },
+      // {
+      //   name: "title",
+      //   type: "string",
+      //   required: true,
+      //   defaultValue: "Wie ben ik?",
+      // },
       {
         name: "text",
         type: "richText",
@@ -230,11 +230,11 @@ const componentsConfig = [
     name: "Text",
     path: "Standard/Text",
     inputs: [
-      {
-        name: "title",
-        type: "string",
-        friendlyName: "Title",
-      },
+      // {
+      //   name: "title",
+      //   type: "string",
+      //   friendlyName: "Title",
+      // },
       {
         name: "text",
         type: "richText",
@@ -271,6 +271,12 @@ const componentsConfig = [
         type: "uiBlocks",
       },
     ],
+    isRSC: true,
+  },
+
+  {
+    name: "BlogPosts",
+    path: "organisms/BlogPosts",
     isRSC: true,
   },
 ];
