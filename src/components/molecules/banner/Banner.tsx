@@ -14,7 +14,7 @@ type BannerProps = {
 export default function Banner(props: BannerProps) {
   return (
     <>
-      <header className="h-screen w-screen flex items-center justify-center">
+      <header className="h-screen w-screen flex items-center justify-center ">
         <Image
           src={props.imageUrl}
           alt="banner"
@@ -35,7 +35,7 @@ export default function Banner(props: BannerProps) {
               {props.description && (
                 <Text
                   text={props.description}
-                  className="text-lg drop-shadow-text text-white"
+                  className="text-lg drop-shadow-text text-white text-center"
                 />
               )}
             </div>
