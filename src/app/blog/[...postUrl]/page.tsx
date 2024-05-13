@@ -41,7 +41,7 @@ export default async function Page(props: PageProps) {
   const customComponents = await loadComponents();
 
   // Get the post URL from the URL path
-  const postUrl = (props.params?.postUrl?.join("/") || "").replace(/^\//, "");
+  const postUrl = props.params.postUrl.join("/");
 
   // Fetch the content for the post
   const content = await fetchOneEntry({
