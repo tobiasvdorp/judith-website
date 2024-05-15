@@ -52,7 +52,7 @@
 a:not(a.card) {
   @apply hover:underline hover:underline-offset-4;
 }
-
+/*
 a:not(nav a):not(.button):not(.card) {
   @apply underline underline-offset-4;
-}
+} */
