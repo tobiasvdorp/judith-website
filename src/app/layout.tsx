@@ -35,6 +35,11 @@ export default async function RootLayout({
     model: "navigation-links",
   });
 
+  const footerContent = await fetchOneEntry({
+    apiKey,
+    model: "footer-links",
+  });
+
   return (
     <html lang="en">
       <body
@@ -47,7 +52,10 @@ export default async function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
-        {/* <Footer /> */}
+        <Footer
+          links={footerContent?.data?.links}
+          logo={navContent?.data?.logo}
+        />
       </body>
     </html>
   );
