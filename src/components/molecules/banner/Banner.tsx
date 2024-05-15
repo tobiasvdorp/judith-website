@@ -14,7 +14,7 @@ type BannerProps = {
 export default function Banner(props: BannerProps) {
   return (
     <>
-      <header className="h-screen w-screen flex items-center justify-center ">
+      <header className="h-screen w-screen flex items-center justify-center bg-primary ">
         <Image
           src={props.imageUrl}
           alt="banner"
