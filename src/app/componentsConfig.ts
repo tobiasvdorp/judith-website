@@ -279,6 +279,21 @@ const componentsConfig = [
     path: "organisms/BlogPosts",
     isRSC: true,
   },
+
+  {
+    name: "AgendaItems",
+    path: "organisms/AgendaItems",
+    isRSC: true,
+    inputs: [
+      {
+        name: "isHomeComponent",
+        friendlyName: "On homepage",
+        type: "boolean",
+        defaultValue: false,
+        required: true,
+      },
+    ],
+  },
 ];
 
 export default componentsConfig;
