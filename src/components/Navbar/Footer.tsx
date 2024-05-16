@@ -60,6 +60,7 @@ export default function Footer({ links, logo }: FooterProps) {
                     rel="noreferrer"
                     target="_blank"
                     className="text-gray-700 transition hover:opacity-75"
+                    aria-label={link.label}
                   >
                     {
                       {
@@ -96,7 +97,7 @@ export default function Footer({ links, logo }: FooterProps) {
                     <li key={index}>
                       <Link
                         href={`${link.url}`}
-                        className="text-gray-500 hover:text-gray-900 transition"
+                        className="text-gray-600 hover:text-gray-900 transition"
                       >
                         {link.label}
                       </Link>
@@ -107,7 +108,7 @@ export default function Footer({ links, logo }: FooterProps) {
             ))}
           </div>
 
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-600">
             &copy; 2024 - Judith van Dorp. Alle rechten voorbehouden.
             <br />
             <br />
