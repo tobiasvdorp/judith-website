@@ -10,6 +10,7 @@ import {
   getBuilderSearchParams,
 } from "@builder.io/sdk-react-nextjs";
 import NotFound from "@/app/[...page]/not-found";
+import { Metadata } from "next";
 
 const apiKey = "87f7e6ddda884039ad862d083035a471";
 
@@ -36,6 +37,34 @@ type PageProps = {
   };
   searchParams: Record<string, string>;
 };
+
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { params } = props;
+  const pageUrl = "/" + params?.postUrl?.join("/") || "";
+  console.log(pageUrl);
+  const content = await fetchOneEntry({
+    model: "page",
+    apiKey,
+    options: {
+      fields: "data.title,data.description", // Specificeer welke velden je wilt ophalen
+    },
+    userAttributes: { urlPath: pageUrl },
+  });
+
+  console.log(content);
+  return {
+    title: content?.data?.title + " - Judith van Dorp" || "Pagina",
+    description: content?.data?.description || "Pagina",
+    // image: content?.data?.bannerImage,
+    openGraph: {
+      type: "website",
+      url: "https://judithvandorp.com",
+      title: content?.data?.title + " - Judith van Dorp" || "Pagina",
+      description: content?.data?.description || "Pagina",
+      // image: content?.data?.metaImage,
+    },
+  };
+}
 
 export default async function Page(props: PageProps) {
   const customComponents = await loadComponents();
@@ -71,6 +100,7 @@ export default async function Page(props: PageProps) {
               layout="fill"
               objectFit="cover"
               priority={true}
+              sizes={`(max-width: 850px) 90vw, 800px`}
             />
           </div>
           <div className="">

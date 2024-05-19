@@ -18,11 +18,11 @@ export default function SectionCard(props: SectionCardProps) {
     <>
       <div
         className={twMerge(
-          `overflow-hidden rounded-xl h-fit w-full flex flex-col bg-neutral drop-shadow-md border-2 shadow-neutral-dark border-neutral-dark`,
+          `p-1 overflow-hidden rounded-xl h-fit w-full flex flex-col bg-neutral drop-shadow-md border-2 shadow-neutral-dark border-neutral-dark`,
           props.className
         )}
       >
-        <div className="h-44 w-full relative">
+        <div className="h-44 relative">
           <Image
             src={props.imageSrc}
             alt={props.title}
@@ -30,6 +30,7 @@ export default function SectionCard(props: SectionCardProps) {
             objectFit="cover"
             objectPosition="center"
             className="rounded-xl"
+            sizes="400px"
           />
         </div>
         <div className="flex flex-col gap-2 p-3">

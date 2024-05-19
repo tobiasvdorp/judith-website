@@ -20,6 +20,7 @@ export default function WhoIAm(props: WhoIAmProps) {
             layout="fill"
             objectFit="cover"
             className="rounded-xl"
+            sizes="250px"
           />
         </div>
         <Text

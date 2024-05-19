@@ -9,7 +9,13 @@ export default function NotFound() {
     <div className="h-screen w-screen flex items-center justify-center">
       <div className="flex gap-2 text-center flex-col items-center max-w-[28rem]">
         <div className="relative w-full h-20 mb-4">
-          <Image src="/images/forest.png" alt="Bomen" layout="fill" priority />
+          <Image
+            src="/images/forest.png"
+            alt="Bomen"
+            layout="fill"
+            priority
+            sizes="400px"
+          />
         </div>
         <Title order={1} text="404 - Oeps!" />
         <Text

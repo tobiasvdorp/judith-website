@@ -49,7 +49,13 @@ export default function Footer({ links, logo }: FooterProps) {
         <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 pt-6 sm:px-6 lg:space-y-12 lg:px-8">
           <div className="sm:flex sm:items-center flex justify-between">
             <Link className="relative w-20 h-20" href={"/"}>
-              <Image src={logo} alt="Logo" layout="fill" objectFit="contain" />
+              <Image
+                src={logo}
+                alt="Logo"
+                layout="fill"
+                objectFit="contain"
+                sizes="80px"
+              />
             </Link>
 
             <ul className="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end">

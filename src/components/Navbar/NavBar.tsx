@@ -58,7 +58,13 @@ export default function Navbar({ links, logoSrc }: NavContent) {
       {/* Desktop navbar */}
       <div className="w-full h-full justify-between items-center max-w-screen-lg mx-auto hidden md:flex">
         <Link href="/" className="h-full w-20 relative">
-          <Image src={logoSrc} alt="logo" layout="fill" objectFit="contain" />
+          <Image
+            src={logoSrc}
+            alt="logo"
+            layout="fill"
+            objectFit="contain"
+            sizes="80px"
+          />
         </Link>
         <ul className="flex justify-between lg:max-w-[575px] md:max-w-[490px] w-full">
           <NavLinks links={links} pathname={pathname} />
@@ -70,7 +76,13 @@ export default function Navbar({ links, logoSrc }: NavContent) {
       {/* Mobile navbar */}
       <div className="flex justify-between items-center w-full h-full md:hidden">
         <Link href="/" className="h-full w-20 relative">
-          <Image src={logoSrc} alt="logo" layout="fill" objectFit="contain" />
+          <Image
+            src={logoSrc}
+            alt="logo"
+            layout="fill"
+            objectFit="contain"
+            sizes="80px"
+          />
         </Link>
         {isOpen ? (
           <X

@@ -40,6 +40,7 @@ export default async function BlogPosts() {
                   layout="fill"
                   objectFit="cover"
                   className="group-hover:opacity-70 duration-200"
+                  sizes="400px"
                 />
               </div>
 

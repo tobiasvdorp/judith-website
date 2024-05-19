@@ -76,6 +76,7 @@ export default function AgendaItemsList(agendaItems: AgendaItemsProps) {
               layout="fill"
               objectFit="cover"
               className="group-hover:opacity-30 duration-100 opacity-80 blur-[1px]"
+              sizes="100px"
             />
           </div>
           <div className="w-full">
