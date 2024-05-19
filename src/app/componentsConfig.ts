@@ -73,14 +73,7 @@ const componentsConfig = [
         required: true,
       },
       {
-        name: "linkType",
-        type: "string",
-        defaultValue: "button",
-        hideFromUI: true,
-        required: true,
-      },
-      {
-        name: "href",
+        name: "url",
         friendlyName: "URL",
         type: "string",
         required: true,
