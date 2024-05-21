@@ -14,6 +14,7 @@ export default function MainWrapper(props: MainWrapperProps) {
             props.className
           )}
         >
+          {/* Page content */}
           {props.children}
         </main>
       </div>

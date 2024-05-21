@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
+import { useEffect, useState } from "react";
 
 export default function Parallax({ children }: { children: React.ReactNode }) {
-  const [offsetY, setOffsetY] = React.useState(0);
+  const [offsetY, setOffsetY] = useState(0);
 
   const handleScroll = () => {
     window.requestAnimationFrame(() => setOffsetY(window.scrollY));
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);

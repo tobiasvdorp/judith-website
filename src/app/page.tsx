@@ -6,12 +6,12 @@ import {
 import NotFound from "@/app/not-found";
 import MainWrapper from "@/components/layouts/MainWrapper";
 import Banner from "@/components/molecules/banner/Banner";
-import { loadComponents } from "./componentsConfig";
+import { loadComponents } from "@/app/componentsConfig";
 import type { Metadata } from "next";
 import { returnMetadata } from "@/lib/utils";
-import { PageProps } from "@/types/page";
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
+
 // Generate metadata for the homepage by fetching the homepage entry
 export async function generateMetadata(): Promise<Metadata> {
   const content = await fetchOneEntry({
@@ -21,10 +21,11 @@ export async function generateMetadata(): Promise<Metadata> {
       fields: "data.title,data.description",
     },
     query: {
-      "data.title.$eq": "Home",
+      "data.url": "/",
     },
   });
 
+  // If the homepage doesn't exist, return a 404 page
   if (!content) {
     return returnMetadata(
       "Pagina niet gevonden",
@@ -38,15 +39,18 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function Page(props: PageProps) {
+export default async function HomePage() {
   const customComponents = await loadComponents();
   const urlPath = "/";
 
   const content = await fetchOneEntry({
     model: "page",
     apiKey,
-    options: getBuilderSearchParams(props.searchParams),
+    options: getBuilderSearchParams({}),
     userAttributes: { urlPath },
+    query: {
+      "data.url": urlPath,
+    },
   });
 
   if (!content) {
@@ -71,4 +75,5 @@ export default async function Page(props: PageProps) {
     </>
   );
 }
-export const revalidate = 1;
+
+export const dynamic = 1;

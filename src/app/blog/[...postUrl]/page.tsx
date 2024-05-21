@@ -31,7 +31,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// The props for the page
 type PageProps = {
   params: {
     postUrl: string[];
@@ -55,6 +54,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     },
   });
 
+  // If the post doesn't exist, return a 404 page
   if (!content) {
     return returnMetadata(
       "Pagina niet gevonden",

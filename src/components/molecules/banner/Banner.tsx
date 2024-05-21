@@ -1,5 +1,4 @@
 import Image from "next/legacy/image";
-import Link from "next/link";
 import Title from "@/components/Standard/Title";
 import Text from "@/components/Standard/Text";
 import React from "react";
@@ -14,7 +13,9 @@ type BannerProps = {
 export default function Banner(props: BannerProps) {
   return (
     <>
+      {/* Container */}
       <header className="h-screen w-screen flex items-center justify-center bg-primary relative">
+        {/* Background image */}
         <Image
           src={props.imageUrl}
           alt="banner"
