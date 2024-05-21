@@ -9,6 +9,7 @@ import Banner from "@/components/molecules/banner/Banner";
 import { loadComponents } from "@/app/componentsConfig";
 import type { Metadata } from "next";
 import { returnMetadata } from "@/lib/utils";
+import { PageProps } from "@/types/page";
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
@@ -39,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function HomePage() {
+export default async function HomePage(props: PageProps) {
   const customComponents = await loadComponents();
   const urlPath = "/" + (props.params?.page?.join("/") || "");
 
@@ -48,9 +49,9 @@ export default async function HomePage() {
     apiKey,
     options: getBuilderSearchParams({}),
     userAttributes: { urlPath },
-    query: {
-      "data.url": urlPath,
-    },
+    // query: {
+    //   "data.url": urlPath,
+    // },
   });
 
   if (!content) {
@@ -76,4 +77,4 @@ export default async function HomePage() {
   );
 }
 
-export const dynamic = 1;
+export const revalidate = 1;
