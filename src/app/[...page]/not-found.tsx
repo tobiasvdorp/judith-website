@@ -1,9 +1,9 @@
 import Title from "@/components/Standard/Title";
 import Link from "next/link";
 import Image from "next/legacy/image";
-
 import Text from "@/components/Standard/Text";
 import Button from "@/components/Standard/Button";
+
 export default function NotFound() {
   return (
     <div className="h-screen w-screen flex items-center justify-center">

@@ -12,7 +12,7 @@ import {
 import NotFound from "@/app/[...page]/not-found";
 import { Metadata } from "next";
 
-const apiKey = "87f7e6ddda884039ad862d083035a471";
+const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
 // Generate the static paths for the posts
 export async function generateStaticParams() {

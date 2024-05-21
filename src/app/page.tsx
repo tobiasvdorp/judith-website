@@ -16,8 +16,7 @@ interface MyPageProps {
   searchParams: Record<string, string>;
 }
 
-const apiKey = "87f7e6ddda884039ad862d083035a471";
-
+const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 // Generate metadata for the homepage by fetching the homepage entry
 export async function generateMetadata(): Promise<Metadata> {
   const content = await fetchOneEntry({

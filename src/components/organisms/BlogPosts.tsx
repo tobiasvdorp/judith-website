@@ -9,9 +9,8 @@ type BlogPostProps = {
   url: string;
 };
 
-const apiKey = "87f7e6ddda884039ad862d083035a471";
-
 export default async function BlogPosts() {
+  const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
   const blogPosts = await fetchEntries({
     model: "blogpost",
     apiKey,

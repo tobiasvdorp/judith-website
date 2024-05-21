@@ -19,11 +19,14 @@ export type AgendaItem = {
     mainImage: string;
   };
 };
+
+const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
+
 export default async function AgendaItems() {
   const agendaItems = (await fetchEntries({
     model: "agenda-item",
     limit: 10,
-    apiKey: "87f7e6ddda884039ad862d083035a471",
+    apiKey,
     fields: "data.title,data.date,data.shortText,data.url,id,data.mainImage",
   })) as AgendaItem[];
 

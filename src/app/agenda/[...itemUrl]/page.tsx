@@ -1,6 +1,7 @@
 import NotFound from "@/app/[...page]/not-found";
 import { loadComponents } from "@/app/componentsConfig";
 import MainWrapper from "@/components/layouts/MainWrapper";
+
 import {
   Content,
   fetchEntries,
@@ -8,6 +9,8 @@ import {
   getBuilderSearchParams,
 } from "@builder.io/sdk-react-nextjs";
 import { Metadata } from "next";
+
+const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
 type PageProps = {
   params: {
@@ -22,7 +25,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   const content = await fetchOneEntry({
     model: "page",
-    apiKey: "87f7e6ddda884039ad862d083035a471",
+    apiKey,
     options: {
       fields: "data.title,data.description",
     },
@@ -32,6 +35,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   return {
     title: content?.data?.title || "Activiteit" + " - Judith van Dorp",
     description: content?.data?.description || "Activiteit",
+    // TODO: Add image
     // image: content?.data?.bannerImage,
     openGraph: {
       type: "website",
@@ -45,7 +49,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 export async function generateStaticParams() {
   const items = await fetchEntries({
     model: "agenda-item",
-    apiKey: "87f7e6ddda884039ad862d083035a471",
+    apiKey,
     options: {
       limit: 100,
     },
@@ -63,7 +67,7 @@ export default async function Page(props: PageProps) {
 
   const content = await fetchOneEntry({
     model: "agenda-item",
-    apiKey: "87f7e6ddda884039ad862d083035a471",
+    apiKey,
     options: getBuilderSearchParams(props.searchParams),
     userAttributes: { itemUrl },
     query: {
@@ -82,7 +86,7 @@ export default async function Page(props: PageProps) {
         <Content
           content={content}
           model="agenda-item"
-          apiKey={"87f7e6ddda884039ad862d083035a471"}
+          apiKey={apiKey}
           customComponents={customComponents}
         />
       </MainWrapper>
