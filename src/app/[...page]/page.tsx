@@ -14,6 +14,29 @@ import { returnMetadata } from "@/lib/utils";
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
+export async function generateStaticParams() {
+  const pages = await fetchEntries({
+    model: "page",
+    apiKey,
+    fields: "data.url",
+  });
+
+  // Generate the paths for the static pages
+  const paths = pages
+    .map((page) => {
+      const urlSegments = page?.data?.url.split("/").filter(Boolean); // Remove empty strings, useful for the homepage
+      if (urlSegments.length === 0) {
+        // This is the root URL, so return null
+        return null;
+      }
+      return {
+        page: urlSegments,
+      };
+    })
+    .filter(Boolean); //  Remove null values
+  return paths;
+}
+
 // Generate metadata for the homepage by fetching the homepage entry
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { params } = props;

@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page(props: PageProps) {
   const customComponents = await loadComponents();
-  const urlPath = "/" + (props.params?.page?.join("/") || "");
+  const urlPath = "/";
 
   const content = await fetchOneEntry({
     model: "page",
