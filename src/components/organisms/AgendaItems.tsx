@@ -27,8 +27,6 @@ export default async function AgendaItems() {
     fields: "data.title,data.date,data.shortText,data.url,id,data.mainImage",
   })) as AgendaItem[];
 
-  console.log(agendaItems);
-
   if (!agendaItems) {
     return null;
   }

@@ -23,7 +23,7 @@ const apiKey = "87f7e6ddda884039ad862d083035a471";
 export async function generateMetadata(props: MyPageProps): Promise<Metadata> {
   const { params } = props;
   const pageUrl = "/" + params?.page?.join("/") || "";
-  console.log(pageUrl);
+
   const content = await fetchOneEntry({
     model: "page",
     apiKey,
@@ -33,7 +33,6 @@ export async function generateMetadata(props: MyPageProps): Promise<Metadata> {
     userAttributes: { urlPath: pageUrl },
   });
 
-  console.log(content);
   return {
     title: content?.data?.title + " - Judith van Dorp" || "Pagina",
     description: content?.data?.description || "Pagina",

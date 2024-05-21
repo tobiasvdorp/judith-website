@@ -7,6 +7,7 @@ import {
   fetchOneEntry,
   getBuilderSearchParams,
 } from "@builder.io/sdk-react-nextjs";
+import { Metadata } from "next";
 
 type PageProps = {
   params: {
@@ -15,6 +16,32 @@ type PageProps = {
   searchParams: Record<string, string>;
 };
 
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { params } = props;
+  const pageUrl = "/" + params?.itemUrl?.join("/") || "";
+
+  const content = await fetchOneEntry({
+    model: "page",
+    apiKey: "87f7e6ddda884039ad862d083035a471",
+    options: {
+      fields: "data.title,data.description", // Specificeer welke velden je wilt ophalen
+    },
+    userAttributes: { urlPath: pageUrl },
+  });
+
+  return {
+    title: content?.data?.title + " - Judith van Dorp" || "Pagina",
+    description: content?.data?.description || "Pagina",
+    // image: content?.data?.bannerImage,
+    openGraph: {
+      type: "website",
+      url: "https://judithvandorp.com",
+      title: content?.data?.title + " - Judith van Dorp" || "Pagina",
+      description: content?.data?.description || "Pagina",
+      // image: content?.data?.metaImage,
+    },
+  };
+}
 export async function generateStaticParams() {
   const items = await fetchEntries({
     model: "agenda-item",
