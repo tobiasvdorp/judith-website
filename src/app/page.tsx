@@ -32,14 +32,14 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 
   return {
-    title: content?.data?.title + " - Judith van Dorp" || "Home",
-    description: content?.data?.description || "Homepage",
+    title: content?.data?.title || "Home" + " - Judith van Dorp",
+    description: content?.data?.description || "Home",
     // image: content?.data?.bannerImage,
     openGraph: {
       type: "website",
       url: "https://judithvandorp.com",
-      title: content?.data?.title + " - Judith van Dorp" || "Home",
-      description: content?.data?.description || "Homepage",
+      title: content?.data?.title || "Home" + " - Judith van Dorp",
+      description: content?.data?.description || "Homepagina",
       // image: content?.data?.metaImage,
     },
   };

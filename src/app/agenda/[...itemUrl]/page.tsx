@@ -24,20 +24,20 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     model: "page",
     apiKey: "87f7e6ddda884039ad862d083035a471",
     options: {
-      fields: "data.title,data.description", // Specificeer welke velden je wilt ophalen
+      fields: "data.title,data.description",
     },
     userAttributes: { urlPath: pageUrl },
   });
 
   return {
-    title: content?.data?.title + " - Judith van Dorp" || "Pagina",
-    description: content?.data?.description || "Pagina",
+    title: content?.data?.title || "Activiteit" + " - Judith van Dorp",
+    description: content?.data?.description || "Activiteit",
     // image: content?.data?.bannerImage,
     openGraph: {
       type: "website",
       url: "https://judithvandorp.com",
-      title: content?.data?.title + " - Judith van Dorp" || "Pagina",
-      description: content?.data?.description || "Pagina",
+      title: content?.data?.title || "Activiteit" + " - Judith van Dorp",
+      description: content?.data?.description || "Activiteit",
       // image: content?.data?.metaImage,
     },
   };
@@ -70,6 +70,7 @@ export default async function Page(props: PageProps) {
       "data.url": itemUrl,
     },
   });
+  console.log(content);
 
   if (!content) {
     return NotFound();
@@ -77,7 +78,6 @@ export default async function Page(props: PageProps) {
 
   return (
     <div>
-      <h1 className="pt-40">{content?.data?.title}</h1>
       <MainWrapper>
         <Content
           content={content}

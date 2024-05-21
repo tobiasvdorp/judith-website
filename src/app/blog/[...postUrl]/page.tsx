@@ -52,14 +52,14 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   });
 
   return {
-    title: content?.data?.title + " - Judith van Dorp" || "Pagina",
-    description: content?.data?.description || "Pagina",
+    title: content?.data?.title || "Blog artikel" + " - Judith van Dorp",
+    description: content?.data?.description || "Blog artikel",
     // image: content?.data?.bannerImage,
     openGraph: {
       type: "website",
       url: "https://judithvandorp.com",
-      title: content?.data?.title + " - Judith van Dorp" || "Pagina",
-      description: content?.data?.description || "Pagina",
+      title: content?.data?.title || "Blog artikel" + " - Judith van Dorp",
+      description: content?.data?.description || "Blog artikel",
       // image: content?.data?.metaImage,
     },
   };
