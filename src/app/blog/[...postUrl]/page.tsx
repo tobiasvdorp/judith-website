@@ -9,8 +9,9 @@ import {
   fetchOneEntry,
   getBuilderSearchParams,
 } from "@builder.io/sdk-react-nextjs";
-import NotFound from "@/app/[...page]/not-found";
+import NotFound from "@/app/not-found";
 import { Metadata } from "next";
+import { returnMetadata } from "@/lib/utils";
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
@@ -40,29 +41,31 @@ type PageProps = {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { params } = props;
-  const pageUrl = "/" + params?.postUrl?.join("/") || "";
+  const pageUrl = params?.postUrl?.join("/") || "";
 
   const content = await fetchOneEntry({
-    model: "page",
+    model: "blogpost",
     apiKey,
     options: {
-      fields: "data.title,data.description", // Specificeer welke velden je wilt ophalen
+      fields: "data.title,data.shortText",
     },
-    userAttributes: { urlPath: pageUrl },
+    userAttributes: { pageUrl },
+    query: {
+      "data.url": pageUrl,
+    },
   });
 
-  return {
-    title: content?.data?.title || "Blog artikel" + " - Judith van Dorp",
-    description: content?.data?.description || "Blog artikel",
-    // image: content?.data?.bannerImage,
-    openGraph: {
-      type: "website",
-      url: "https://judithvandorp.com",
-      title: content?.data?.title || "Blog artikel" + " - Judith van Dorp",
-      description: content?.data?.description || "Blog artikel",
-      // image: content?.data?.metaImage,
-    },
-  };
+  if (!content) {
+    return returnMetadata(
+      "Pagina niet gevonden",
+      "Het lijkt erop dat deze pagina niet bestaat."
+    );
+  } else {
+    return returnMetadata(
+      content.data?.title || "",
+      content.data?.shortText || ""
+    );
+  }
 }
 
 export default async function Page(props: PageProps) {

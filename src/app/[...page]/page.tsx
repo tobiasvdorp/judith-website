@@ -4,23 +4,18 @@ import {
   fetchOneEntry,
   getBuilderSearchParams,
 } from "@builder.io/sdk-react-nextjs";
-import NotFound from "./not-found";
+import NotFound from "../not-found";
 import MainWrapper from "@/components/layouts/MainWrapper";
 import Banner from "@/components/molecules/banner/Banner";
 import { loadComponents } from "../componentsConfig";
 import { Metadata } from "next";
+import { PageProps } from "@/types/page";
+import { returnMetadata } from "@/lib/utils";
 
-interface MyPageProps {
-  params: {
-    page: string[];
-  };
-  searchParams: Record<string, string>;
-}
-
-const apiKey = "87f7e6ddda884039ad862d083035a471";
+const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
 // Generate metadata for the homepage by fetching the homepage entry
-export async function generateMetadata(props: MyPageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { params } = props;
   const pageUrl = "/" + params?.page?.join("/") || "";
 
@@ -28,26 +23,25 @@ export async function generateMetadata(props: MyPageProps): Promise<Metadata> {
     model: "page",
     apiKey,
     options: {
-      fields: "data.title,data.description", // Specificeer welke velden je wilt ophalen
+      fields: "data.title,data.description",
     },
     userAttributes: { urlPath: pageUrl },
   });
 
-  return {
-    title: content?.data?.title + " - Judith van Dorp" || "Pagina",
-    description: content?.data?.description || "Pagina",
-    // image: content?.data?.bannerImage,
-    openGraph: {
-      type: "website",
-      url: "https://judithvandorp.com",
-      title: content?.data?.title + " - Judith van Dorp" || "Pagina",
-      description: content?.data?.description || "Pagina",
-      // image: content?.data?.metaImage,
-    },
-  };
+  if (!content) {
+    return returnMetadata(
+      "Pagina niet gevonden",
+      "Het lijkt erop dat deze pagina niet bestaat."
+    );
+  } else {
+    return returnMetadata(
+      content.data?.title ?? "",
+      content.data?.description ?? ""
+    );
+  }
 }
 
-export default async function Page(props: MyPageProps) {
+export default async function Page(props: PageProps) {
   const customComponents = await loadComponents();
   const urlPath = "/" + (props.params?.page?.join("/") || "");
 

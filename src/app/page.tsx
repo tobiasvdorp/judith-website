@@ -3,18 +3,13 @@ import {
   fetchOneEntry,
   getBuilderSearchParams,
 } from "@builder.io/sdk-react-nextjs";
-import NotFound from "@/app/[...page]/not-found";
+import NotFound from "@/app/not-found";
 import MainWrapper from "@/components/layouts/MainWrapper";
 import Banner from "@/components/molecules/banner/Banner";
 import { loadComponents } from "./componentsConfig";
 import type { Metadata } from "next";
-
-interface MyPageProps {
-  params: {
-    page: string[];
-  };
-  searchParams: Record<string, string>;
-}
+import { returnMetadata } from "@/lib/utils";
+import { PageProps } from "@/types/page";
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 // Generate metadata for the homepage by fetching the homepage entry
@@ -23,28 +18,27 @@ export async function generateMetadata(): Promise<Metadata> {
     model: "page",
     apiKey,
     options: {
-      fields: "data.title,data.description", // Specificeer welke velden je wilt ophalen
+      fields: "data.title,data.description",
     },
     query: {
-      "data.title.$eq": "Home", // Zorg dat de query correct is geformatteerd
+      "data.title.$eq": "Home",
     },
   });
 
-  return {
-    title: content?.data?.title || "Home" + " - Judith van Dorp",
-    description: content?.data?.description || "Home",
-    // image: content?.data?.bannerImage,
-    openGraph: {
-      type: "website",
-      url: "https://judithvandorp.com",
-      title: content?.data?.title || "Home" + " - Judith van Dorp",
-      description: content?.data?.description || "Homepagina",
-      // image: content?.data?.metaImage,
-    },
-  };
+  if (!content) {
+    return returnMetadata(
+      "Pagina niet gevonden",
+      "Het lijkt erop dat deze pagina niet bestaat."
+    );
+  } else {
+    return returnMetadata(
+      content.data?.title ?? "",
+      content.data?.description ?? ""
+    );
+  }
 }
 
-export default async function Page(props: MyPageProps) {
+export default async function Page(props: PageProps) {
   const customComponents = await loadComponents();
   const urlPath = "/" + (props.params?.page?.join("/") || "");
 

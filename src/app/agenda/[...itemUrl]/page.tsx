@@ -1,6 +1,7 @@
-import NotFound from "@/app/[...page]/not-found";
+import NotFound from "@/app/not-found";
 import { loadComponents } from "@/app/componentsConfig";
 import MainWrapper from "@/components/layouts/MainWrapper";
+import { returnMetadata } from "@/lib/utils";
 
 import {
   Content,
@@ -24,27 +25,25 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const pageUrl = "/" + params?.itemUrl?.join("/") || "";
 
   const content = await fetchOneEntry({
-    model: "page",
+    model: "agenda-item",
     apiKey,
     options: {
-      fields: "data.title,data.description",
+      fields: "data.title,data.shortText",
     },
     userAttributes: { urlPath: pageUrl },
   });
 
-  return {
-    title: content?.data?.title || "Activiteit" + " - Judith van Dorp",
-    description: content?.data?.description || "Activiteit",
-    // TODO: Add image
-    // image: content?.data?.bannerImage,
-    openGraph: {
-      type: "website",
-      url: "https://judithvandorp.com",
-      title: content?.data?.title || "Activiteit" + " - Judith van Dorp",
-      description: content?.data?.description || "Activiteit",
-      // image: content?.data?.metaImage,
-    },
-  };
+  if (!content) {
+    return returnMetadata(
+      "Pagina niet gevonden",
+      "Het lijkt erop dat deze pagina niet bestaat."
+    );
+  } else {
+    return returnMetadata(
+      content.data?.title ?? "",
+      content.data?.shortText ?? ""
+    );
+  }
 }
 export async function generateStaticParams() {
   const items = await fetchEntries({
@@ -74,7 +73,6 @@ export default async function Page(props: PageProps) {
       "data.url": itemUrl,
     },
   });
-  console.log(content);
 
   if (!content) {
     return NotFound();
