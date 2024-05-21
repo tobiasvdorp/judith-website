@@ -13,7 +13,8 @@ This project is an ongoing effort to create a modern, high-performance website u
 ## Goals
 
 One of my primary objectives is to deliver a lightning-fast, SEO-optimized website. I am committed to achieving a 100% score on all Lighthouse metrics for every page. To ensure this, I am continuously testing the website using [Unlighthouse](https://unlighthouse.dev/).
-![Screenshot 2024-05-21 at 20 00 06](https://github.com/tobiasvdorp/judith-website/assets/113168391/fb752525-2862-495d-8658-4e3242348374)
+![Screenshot 2024-05-21 at 20 21 20](https://github.com/tobiasvdorp/judith-website/assets/113168391/12af4cff-d929-40f1-a2a6-d1bba988b387)
+
 
 ## Getting Started
 
