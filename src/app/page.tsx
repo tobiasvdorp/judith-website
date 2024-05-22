@@ -44,7 +44,6 @@ export default async function HomePage(props: PageProps) {
   const customComponents = await loadComponents();
   const urlPath = "/" + (props.params?.page?.join("/") || "");
 
-  console.log(urlPath);
   const content = await fetchOneEntry({
     model: "page",
     apiKey,
