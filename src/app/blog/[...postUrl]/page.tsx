@@ -2,7 +2,7 @@ import { loadComponents } from "@/app/componentsConfig";
 import MainWrapper from "@/components/layouts/MainWrapper";
 import Title from "@/components/Standard/Title";
 import Text from "@/components/Standard/Text";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import {
   Content,
   fetchEntries,

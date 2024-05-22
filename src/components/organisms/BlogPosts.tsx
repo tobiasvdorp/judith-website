@@ -1,6 +1,6 @@
 import { fetchEntries } from "@builder.io/sdk-react-nextjs";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 type BlogPostProps = {
   title: string;
