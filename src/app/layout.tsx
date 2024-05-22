@@ -15,7 +15,7 @@ const space = Space_Grotesk({
 });
 
 const rodetta = localFont({
-  src: "../../public/fonts/rodetta.woff",
+  src: "../../public/fonts/rodetta.woff2",
   variable: "--font-rodetta",
   display: "swap",
 });
