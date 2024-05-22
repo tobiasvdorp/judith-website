@@ -21,9 +21,9 @@ export async function generateMetadata(): Promise<Metadata> {
     options: {
       fields: "data.title,data.description",
     },
-    query: {
-      "data.url": "/",
-    },
+    // query: {
+    //   "data.url": "/",
+    // },
   });
 
   // If the homepage doesn't exist, return a 404 page
@@ -44,13 +44,14 @@ export default async function HomePage(props: PageProps) {
   const customComponents = await loadComponents();
   const urlPath = "/" + (props.params?.page?.join("/") || "");
 
+  console.log(urlPath);
   const content = await fetchOneEntry({
     model: "page",
     apiKey,
     options: getBuilderSearchParams({}),
     userAttributes: { urlPath },
     // query: {
-    //   "data.url": urlPath,
+    //   "data.url": "/",
     // },
   });
 

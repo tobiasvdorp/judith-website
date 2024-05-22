@@ -13,7 +13,25 @@ import { PageProps } from "@/types/page";
 import { returnMetadata } from "@/lib/utils";
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
+export async function generateStaticParams() {
+  const pages = await fetchEntries({
+    model: "page",
+    apiKey,
+    fields: "data.url",
+  });
 
+  // Map de pagina's naar hun paden en voeg een speciale case toe voor de homepage
+  return pages.map((page) => {
+    if (page?.data?.url === "/") {
+      // Sla de homepage over
+      return null;
+    } else {
+      return {
+        page: page?.data?.url.split("/").filter(Boolean),
+      };
+    }
+  });
+}
 // Generate metadata for the homepage by fetching the homepage entry
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { params } = props;
@@ -49,7 +67,7 @@ export default async function Page(props: PageProps) {
     model: "page",
     apiKey,
     options: getBuilderSearchParams(props.searchParams),
-    userAttributes: { urlPath },
+    userAttributes: { urlPath: urlPath },
   });
 
   if (!content) {
