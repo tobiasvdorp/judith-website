@@ -39,7 +39,7 @@ export default async function BlogPosts() {
                   layout="fill"
                   objectFit="cover"
                   className="group-hover:opacity-70 duration-200"
-                  sizes="400px"
+                  sizes="(max-width: 768px) 90vw, (min-width: 768px) 45vw, (min-width: 1100px) 500px"
                 />
               </div>
 
