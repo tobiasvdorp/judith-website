@@ -23,7 +23,7 @@ const config = {
 
       fontFamily: {
         space: ["var(--font-space)", "sans"],
-        rodetta: ["var(--font-rodetta)", "serif"],
+        rodetta: ["var(--font-space)", "serif"],
       },
 
       dropShadow: {
