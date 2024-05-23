@@ -14,7 +14,7 @@ type WhatIDoProps = {
 export default function WhatIDo(props: WhatIDoProps) {
   return (
     <>
-      <div className="p-4">
+      <div className="p-4 py-20">
         <SectionTitle title={props.title} />
         {props.description && (
           <div className="w-full text-center max-w-80 mx-auto">
