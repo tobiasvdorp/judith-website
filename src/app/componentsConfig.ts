@@ -285,6 +285,12 @@ const componentsConfig = [
         defaultValue: false,
         required: true,
       },
+      {
+        name: "title",
+        type: "string",
+        required: false,
+        showIf: `options.get('isHomeComponent') === true`,
+      },
     ],
   },
 ];

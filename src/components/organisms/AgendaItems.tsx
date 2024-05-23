@@ -2,10 +2,11 @@ import { fetchEntries } from "@builder.io/sdk-react-nextjs";
 import Link from "next/link";
 import Image from "next/legacy/image";
 import AgendaItemsList from "../molecules/AgendaItemsList";
+import SectionTitle from "../ui/SectionTitle";
 
 type AgendaItemsProps = {
   agendaItems: AgendaItem[];
-  homePageVersion: boolean;
+  isHomeComponent: boolean;
   title: string;
 };
 
@@ -22,10 +23,11 @@ export type AgendaItem = {
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
-export default async function AgendaItems() {
+export default async function AgendaItems(props: AgendaItemsProps) {
   const agendaItems = (await fetchEntries({
     model: "agenda-item",
-    limit: 10,
+    // If its the home component, only show the first item
+    limit: props.isHomeComponent ? 3 : 100,
     apiKey,
     fields: "data.title,data.date,data.shortText,data.url,id,data.mainImage",
   })) as AgendaItem[];
@@ -36,8 +38,14 @@ export default async function AgendaItems() {
 
   return (
     <>
+      {props.isHomeComponent && (
+        <SectionTitle title={props.title} className="pb-16" />
+      )}
       <div className="grid grid-cols-1 gap-4">
-        <AgendaItemsList agendaItems={agendaItems} />
+        <AgendaItemsList
+          agendaItems={agendaItems}
+          isHomeComponent={props.isHomeComponent}
+        />
       </div>
     </>
   );
