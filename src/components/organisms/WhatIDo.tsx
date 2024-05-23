@@ -46,9 +46,9 @@ export default function WhatIDo(props: WhatIDoProps) {
                       <div className="w-5">
                         {
                           {
-                            Buitenavonturen: <FaProjectDiagram />,
+                            Projecten: <FaProjectDiagram />,
                             Coaching: <FaHandsHelping />,
-                            Projecten: <FaMountainSun />,
+                            Buitenavonturen: <FaMountainSun />,
                           }[sectionCard.title]
                         }
                       </div>
