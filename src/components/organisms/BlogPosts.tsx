@@ -30,7 +30,7 @@ export default async function BlogPosts() {
           <div key={post.id} className="w-full">
             <Link
               href={`/blog/${post.data?.url}`}
-              className="h-96 group overflow-hidden w-full flex flex-col items-center rounded-lg shadow hover:bg-neutral-dark card bg-neutral drop-shadow-sm hover:scale-[1.01] duration-75 hover:border-gray-300 border-2 shadow-neutral-dark border-neutral-dark"
+              className="h-96 group overflow-hidden w-full flex flex-col items-center rounded-lg shadow hover:bg-neutral-dark card bg-neutral-light drop-shadow-sm hover:scale-[1.01] duration-75 hover:border-gray-300 border-2 shadow-neutral-dark border-neutral-dark"
             >
               <div className="relative h-64 w-full group-hover:bg-primary">
                 <Image
