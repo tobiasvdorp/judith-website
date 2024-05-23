@@ -116,7 +116,7 @@ export default function Navbar({ links, logoSrc }: NavContent) {
               <ul className="flex flex-col p-6 md:p-8 divide-y">
                 <NavLinks links={links} pathname={pathname} />
                 <div className="flex items-center gap-2 pt-4">
-                  <Button url="/contact" text="contact"></Button>
+                  <Button url="/contact" text="Contact"></Button>
                 </div>
               </ul>
             </motion.div>
