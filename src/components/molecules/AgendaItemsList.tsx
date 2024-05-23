@@ -4,6 +4,8 @@ import Link from "next/link";
 import { AgendaItem } from "../organisms/AgendaItems";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import Input from "../Standard/Input";
+import ContactForm from "../organisms/ContactForm";
 
 type AgendaItemsProps = {
   agendaItems: AgendaItem[];
@@ -38,22 +40,17 @@ export default function AgendaItemsList(agendaItems: AgendaItemsProps) {
   return (
     <>
       {agendaItems.isHomeComponent ? null : (
-        <div className="relative z-0">
-          <input
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="block py-2.5 px-0 pl-5 w-full text-sm  bg-transparent border-0 rounded-sm border-b-2 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-primary-dark peer "
-            placeholder=" "
-            type="text"
-            id="search"
-          ></input>
-          <label
-            htmlFor="search"
-            className="absolute text-md  duration-300 transform -translate-y-6 peer-focus:font-bold top-2.5 -z-10 left-0 origin-[0] peer-focus:start-0 peer-focus:gray-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:left-6 peer-placeholder-shown:translate-y-0 peer-focus:scale-80 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-          >
-            Activiteit zoeken
-          </label>
+        <Input
+          placeholder=" "
+          type="text"
+          id="search"
+          label="Activiteit zoeken"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          inputClassName="pl-5"
+          labelClassName="peer-placeholder-shown:left-6"
+        >
           <FaSearch className="absolute top-1/2 -translate-y-1/2" />
-        </div>
+        </Input>
       )}
 
       {/* FIlters */}
