@@ -16,7 +16,7 @@ export type SectionCardProps = {
 export default function SectionCard(props: SectionCardProps) {
   return (
     <>
-      <div
+      {/* <div
         className={twMerge(
           `overflow-hidden rounded-xl h-[400px] w-full flex flex-col bg-neutral drop-shadow-md border-2 shadow-neutral-dark border-neutral-dark`,
           props.className
@@ -43,11 +43,37 @@ export default function SectionCard(props: SectionCardProps) {
           <div className="h-fit last-card-text">
             <Text text={props.description} />
           </div>
-          {/* <Button
+           <Button
             url={props.buttonRef}
             className="w-full"
             text="Meer bekijken"
-          ></Button> */}
+          ></Button> 
+        </div>
+      </div> */}
+
+      <div className="flex flex-row overflow-visible drop-shadow-md w-full h-fit bg-neutral rounded-md py-5 px-4 relative border-2 border-neutral-dark">
+        <div className="absolute -left-20 top-1/2 -translate-y-1/2">
+          <div className="relative w-64 h-64 rounded-lg overflow-hidden drop-shadow-lg ">
+            <Image
+              src={props.imageSrc}
+              alt={props.title}
+              objectFit="cover"
+              layout="fill"
+              sizes="400px"
+              className="left-10 "
+            />
+          </div>
+        </div>
+        <div className="pl-48">
+          <Title text={props.title} order={3} className="" />
+          <Text text={props.description} />
+          <div className="w-full justify-end flex">
+            <Button
+              url={props.buttonRef}
+              text="Meer informatie"
+              className=""
+            ></Button>
+          </div>
         </div>
       </div>
     </>

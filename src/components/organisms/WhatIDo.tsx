@@ -4,7 +4,17 @@ import SectionCard, {
 } from "../molecules/what-i-do/SectionCard";
 import Text from "@/components/Standard/Text";
 import MainWrapper from "../layouts/MainWrapper";
+import { FaProjectDiagram, FaHandsHelping } from "react-icons/fa";
+import { FaMountainSun } from "react-icons/fa6";
 
+import {
+  CardBody,
+  CardContainer,
+  CardItem,
+} from "@/components/organisms/AceCard";
+import { Link } from "lucide-react";
+import Image from "next/image";
+import Button from "../Standard/Button";
 type WhatIDoProps = {
   title: string;
   description?: string;
@@ -14,7 +24,7 @@ type WhatIDoProps = {
 export default function WhatIDo(props: WhatIDoProps) {
   return (
     <>
-      <div className="p-4 py-20">
+      <div className="py-36">
         <SectionTitle title={props.title} />
         {props.description && (
           <div className="w-full text-center max-w-80 mx-auto">
@@ -22,14 +32,47 @@ export default function WhatIDo(props: WhatIDoProps) {
           </div>
         )}
         <div className="flex items-center justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-3 ">
+          <div className="flex flex-col lg:flex-row gap-2 gap-y-6 w-full  items-center justify-center ">
             {props.sectionCards &&
               props.sectionCards.map((sectionCard, index) => (
-                <SectionCard
-                  key={index}
-                  {...sectionCard}
-                  className={`${index === props.sectionCards.length - 1 && "sm:col-span-2 lg:col-span-1 last-card"}`}
-                />
+                // <SectionCard
+                //   key={index}
+                //   {...sectionCard}
+                //   className={`${index === props.sectionCards.length - 1 && ""}`}
+                // />
+                <>
+                  <div className=" bg-neutral-light w-full lg:h-64 relative rounded-xl p-6 border box-shadow-md max-w-xl">
+                    <div className="text-xl font-rodetta text-neutral-600 flex items-center gap-4">
+                      <div className="w-5">
+                        {
+                          {
+                            Buitenavonturen: <FaProjectDiagram />,
+                            Coaching: <FaHandsHelping />,
+                            Projecten: <FaMountainSun />,
+                          }[sectionCard.title]
+                        }
+                      </div>
+                      {sectionCard.title}
+                    </div>
+                    <div className="text-neutral-500 text-sm max-w-full mb-auto">
+                      {sectionCard.description}
+                    </div>
+                    {/* <CardItem translateZ="100" className="w-full h-full mt-4">
+                        <Image
+                          src={sectionCard.imageSrc}
+                          className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                          alt="thumbnail"
+                        />
+                      </CardItem> */}
+                    <div className="flex lg:justify-between justify-end items-center w-full pt-2 lg:pb-0">
+                      <Button
+                        text="Meer informatie"
+                        url={sectionCard.buttonRef}
+                        className="lg:absolute lg:-bottom-5 lg:left-1/2 lg:-translate-x-1/2 w-fit text-nowrap "
+                      ></Button>
+                    </div>
+                  </div>
+                </>
               ))}
           </div>
         </div>
