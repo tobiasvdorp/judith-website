@@ -1,19 +1,8 @@
 import SectionTitle from "@/components/ui/SectionTitle";
-import SectionCard, {
-  SectionCardProps,
-} from "../molecules/what-i-do/SectionCard";
+import type { SectionCardProps } from "../molecules/what-i-do/SectionCard";
 import Text from "@/components/Standard/Text";
-import MainWrapper from "../layouts/MainWrapper";
 import { FaProjectDiagram, FaHandsHelping } from "react-icons/fa";
 import { FaMountainSun } from "react-icons/fa6";
-
-import {
-  CardBody,
-  CardContainer,
-  CardItem,
-} from "@/components/organisms/AceCard";
-import { Link } from "lucide-react";
-import Image from "next/image";
 import Button from "../Standard/Button";
 type WhatIDoProps = {
   title: string;
