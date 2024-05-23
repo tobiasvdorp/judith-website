@@ -22,7 +22,7 @@ export default function Banner(props: BannerProps) {
           layout="fill"
           objectFit="cover"
           priority
-          sizes="(max-width: 400px) 200vw, 100vw"
+          sizes="(max-width: 650px) 500px, 100vw"
         />
         <Arrow />
 
