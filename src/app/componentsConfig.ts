@@ -293,6 +293,12 @@ const componentsConfig = [
       },
     ],
   },
+
+  {
+    name: "ContactForm",
+    path: "organisms/ContactForm",
+    isRSC: false,
+  },
 ];
 
 export default componentsConfig;
