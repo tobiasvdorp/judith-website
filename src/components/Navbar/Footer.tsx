@@ -95,7 +95,7 @@ export default function Footer({ links, logo }: FooterProps) {
           <div className="grid grid-cols-1 gap-8 sm:gap-y-12 border-t border-gray-100 pt-8 sm:grid-cols-2 lg:grid-cols-4">
             {links.map((link, index) => (
               <div key={index}>
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 className="text-lg font-semibold text-gray-900 font-space">
                   {link.groupTitle}
                 </h2>
                 <ul className="mt-4 space-y-4">

@@ -15,13 +15,13 @@ export default function SectionTitle({ title, className }: SectionTitle) {
         )}
       >
         {/* Line */}
-        <hr className="w-full text-center border border-black opacity-70" />
+        <hr className="w-full text-center border border-black opacity-30" />
         {/* Title */}
         <div className="w-fit text-nowrap px-3 md:px-8 text-center">
           <Title order={2} text={title} />
         </div>
         {/* Line */}
-        <hr className="w-full text-center border border-black opacity-70" />
+        <hr className="w-full text-center border border-black opacity-30" />
       </div>
     </>
   );
