@@ -44,7 +44,6 @@ export default function Navbar({ links, logoSrc }: NavContent) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = "/" + usePathname().split("/")[1] || "";
 
-  console.log(pathname);
   const sidebar = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "100%" },
