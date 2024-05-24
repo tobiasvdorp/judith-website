@@ -39,17 +39,21 @@ export default async function AgendaItems(props: AgendaItemsProps) {
 
   return (
     <>
-      {props.isHomeComponent && (
-        <SectionTitle title={props.title} className="" />
-      )}
-      <div className="grid grid-cols-1 gap-4">
-        <AgendaItemsList
-          agendaItems={agendaItems}
-          isHomeComponent={props.isHomeComponent}
-        />
-      </div>
-      <div className="w-full flex items-center justify-center pt-4">
-        <Button text="Alles bekijken" url="/agenda" />
+      <div className="">
+        {props.isHomeComponent && (
+          <SectionTitle title={props.title} className="" />
+        )}
+        <div className="grid grid-cols-1 gap-4 ">
+          <AgendaItemsList
+            agendaItems={agendaItems}
+            isHomeComponent={props.isHomeComponent}
+          />
+        </div>
+        {props.isHomeComponent && (
+          <div className="w-full flex items-center justify-center pt-4">
+            <Button text="Alles bekijken" url="/agenda" />
+          </div>
+        )}
       </div>
     </>
   );

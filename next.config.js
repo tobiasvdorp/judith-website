@@ -5,6 +5,7 @@ const nextConfig = {
    */
   transpilePackages: ["@builder.io/sdk-react-nextjs"],
   images: {
+    dangerouslyAllowSVG: true,
     remotePatterns: [
       {
         protocol: "https",

@@ -5,7 +5,10 @@ import { AgendaItem } from "../organisms/AgendaItems";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import Input from "../Standard/Input";
-import ContactForm from "../organisms/ContactForm";
+import {
+  MdOutlineContentPasteSearch,
+  MdOutlineSearchOff,
+} from "react-icons/md";
 
 type AgendaItemsProps = {
   agendaItems: AgendaItem[];
@@ -46,12 +49,31 @@ export default function AgendaItemsList(agendaItems: AgendaItemsProps) {
           id="search"
           label="Activiteit zoeken"
           onChange={(e) => setSearchTerm(e.target.value)}
-          inputClassName="pl-5"
+          inputClassName="pl-7"
           labelClassName="peer-placeholder-shown:left-6"
         >
-          <FaSearch className="absolute top-1/2 -translate-y-1/2" />
+          <FaSearch className="absolute top-1/2 -translate-y-1/2 left-2 z-20" />
+          {searchTerm.length !== 0 && results.length !== 0 && (
+            <p className="absolute">
+              {results.length} resultaten voor &quot;{searchTerm}&quot;
+            </p>
+          )}
         </Input>
       )}
+      <div className="w-screen"></div>
+      {/* If there are no results for the searchterm, show "Geen resultaten"*/}
+      {searchTerm.length !== 0 && results.length === 0 ? (
+        <p className="text-center w-full flex flex-col items-center justify-center gap-2">
+          <MdOutlineSearchOff className="text-5xl" /> Geen resultaten gevonden
+          voor &quot;{searchTerm}&quot;
+        </p>
+      ) : // If there are no results and the searchterm is empty, show "Geen items"
+      searchTerm.length === 0 && results.length === 0 ? (
+        <p className="text-center w-full flex flex-col items-center justify-center gap-2">
+          <MdOutlineContentPasteSearch className="text-5xl " /> Er zijn nog geen
+          activiteiten gepland.
+        </p>
+      ) : null}
 
       {/* FIlters */}
       {results.map((item) => (
