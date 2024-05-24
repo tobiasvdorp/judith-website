@@ -95,34 +95,38 @@ export default async function Page(props: PageProps) {
     <>
       <div className="prose prose-md prose-h2:text-xl prose-li:m-1 prose-h3:text-lg prose-h4:text-base prose-p:m-0 prose-ul:m-0 prose-headings:font-rodetta prose-headings:font-bold prose-headings:m-0">
         <MainWrapper className="max-w-[850px] gap-2">
-          <div className="w-full relative h-96">
-            <Image
-              src={content.data?.mainImage}
-              alt="alt"
-              layout="fill"
-              objectFit="cover"
-              priority={true}
-              sizes={`(max-width: 850px) 90vw, 800px`}
+          <article>
+            <div className="w-full relative h-96">
+              <Image
+                src={content.data?.mainImage}
+                alt="alt"
+                layout="fill"
+                objectFit="cover"
+                priority={true}
+                sizes={`(max-width: 850px) 90vw, 800px`}
+              />
+            </div>
+            <div className="">
+              <Title
+                order={1}
+                text={content.data?.title || ""}
+                className="pt-3"
+              />
+              <time dateTime={content.data?.date}>
+                <Text text={content.data?.date} className="italic" />
+              </time>
+            </div>
+            <Text
+              text={content.data?.shortText}
+              className="font-semibold text-lg"
             />
-          </div>
-          <div className="">
-            <Title
-              order={1}
-              text={content.data?.title || ""}
-              className="pt-6"
+            <Content
+              content={content}
+              model="blogpost"
+              apiKey={apiKey}
+              customComponents={customComponents}
             />
-            <Text text={content.data?.date} className="italic" />
-          </div>
-          <Text
-            text={content.data?.shortText}
-            className="font-semibold text-lg"
-          />
-          <Content
-            content={content}
-            model="blogpost"
-            apiKey={apiKey}
-            customComponents={customComponents}
-          />
+          </article>
         </MainWrapper>
       </div>
     </>
