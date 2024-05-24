@@ -13,7 +13,7 @@ export default function ContactForm() {
   };
   return (
     <>
-      <form className="flex flex-col gap-4 w-96" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-5 w-96" onSubmit={handleSubmit}>
         <Input
           id="name"
           label="Naam"
@@ -21,6 +21,8 @@ export default function ContactForm() {
           required
           placeholder=" "
           onChange={(e) => setName(e.target.value)}
+          inputClassName=""
+          labelClassName=""
         />
         <Input
           id="email"
