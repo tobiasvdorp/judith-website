@@ -31,7 +31,7 @@ export default function Banner(props: BannerProps) {
             <Title
               text={props.title}
               order={1}
-              className="sm:text-7xl text-6xl drop-shadow-text text-center text-neutral"
+              className="sm:text-7xl text-6xl drop-shadow-text text-center text-neutral opacity-100"
             />
             <div className="flex gap-x-3 gap-7-0 justify-center max-w-full flex-wrap">
               {props.description && (
