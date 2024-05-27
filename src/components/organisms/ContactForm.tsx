@@ -8,6 +8,8 @@ import axios from "axios";
 import Link from "next/link";
 import Text from "../Standard/Text";
 import Title from "../Standard/Title";
+import Modal from "./Modal";
+import { AnimatePresence } from "framer-motion";
 
 type PostData = {
   gRecaptchaToken: string;
@@ -35,6 +37,7 @@ export function ContactFormInside(props: ContactFormProps) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [modal, setModal] = useState(true);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
@@ -74,6 +77,7 @@ export function ContactFormInside(props: ContactFormProps) {
         setEmail("");
         setMessage("");
         setLoading(false);
+        setModal(true);
       } else {
         console.log("Form submission failed");
       }
@@ -88,6 +92,17 @@ export function ContactFormInside(props: ContactFormProps) {
         {props.text && (
           <Title text={props.text} order={2} className="text-base font-space" />
         )}
+        <AnimatePresence>
+          {modal && (
+            <Modal
+              isOpen={modal}
+              onClose={() => setModal(false)}
+              title="Bedankt!"
+            >
+              <Text text="Ik heb je bericht ontvangen en zal zo snel mogelijk reageren. Je krijgt via de mail een bevestiging." />
+            </Modal>
+          )}
+        </AnimatePresence>
 
         <Input
           id="name"
