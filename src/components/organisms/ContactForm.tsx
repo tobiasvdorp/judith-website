@@ -97,7 +97,10 @@ export function ContactFormInside(props: ContactFormProps) {
 
   return (
     <>
-      <form className="flex flex-col gap-5 w-96" onSubmit={handleSubmitForm}>
+      <form
+        className="flex flex-col gap-5 max-w-96"
+        onSubmit={handleSubmitForm}
+      >
         {props.title && <Title text={props.title} order={2} />}
         {props.text && (
           <Title text={props.text} order={2} className="text-base font-space" />
