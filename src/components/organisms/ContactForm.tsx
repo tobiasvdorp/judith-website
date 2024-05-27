@@ -5,6 +5,9 @@ import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import GoogleCaptchaWrapper from "../layouts/google-captcha-wrapper";
 import axios from "axios";
+import Link from "next/link";
+import Text from "../Standard/Text";
+import Title from "../Standard/Title";
 
 type PostData = {
   gRecaptchaToken: string;
@@ -14,18 +17,24 @@ type PostData = {
   important: string;
 };
 
-export default function ContactForm() {
+type ContactFormProps = {
+  title?: string;
+  text?: string;
+};
+
+export default function ContactForm(props: ContactFormProps) {
   return (
     <GoogleCaptchaWrapper>
-      <ContactFormInside />
+      <ContactFormInside text={props.text} title={props.title} />
     </GoogleCaptchaWrapper>
   );
 }
 
-export function ContactFormInside() {
+export function ContactFormInside(props: ContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
@@ -43,6 +52,7 @@ export function ContactFormInside() {
   };
 
   const submitEnquiryForm = (gReCaptchaToken: string) => {
+    setLoading(true);
     async function goAsync() {
       const response = await axios({
         method: "post",
@@ -59,10 +69,13 @@ export function ContactFormInside() {
         },
       });
 
-      if (response?.data?.success === true) {
-        console.log(`Success with score: ${response?.data?.score}`);
+      if (response.status === 200) {
+        setName("");
+        setEmail("");
+        setMessage("");
+        setLoading(false);
       } else {
-        console.log(`Failure with score: ${response?.data?.score}`);
+        console.log("Form submission failed");
       }
     }
     goAsync().then(() => {}); // suppress typescript error
@@ -71,10 +84,16 @@ export function ContactFormInside() {
   return (
     <>
       <form className="flex flex-col gap-5 w-96" onSubmit={handleSubmitForm}>
+        {props.title && <Title text={props.title} order={2} />}
+        {props.text && (
+          <Title text={props.text} order={2} className="text-base font-space" />
+        )}
+
         <Input
           id="name"
           label="Naam"
           type="text"
+          value={name}
           required
           placeholder=" "
           onChange={(e) => setName(e.target.value)}
@@ -85,22 +104,42 @@ export function ContactFormInside() {
           id="email"
           label="Email"
           type="email"
+          value={email}
           required
           placeholder=" "
           onChange={(e) => setEmail(e.target.value)}
+          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
         />
         <Input
           id="message"
           label="Bericht"
           type="textarea"
+          value={message}
           required
           placeholder=" "
           inputClassName="h-32"
           onChange={(e) => setMessage(e.target.value)}
         />
 
-        <HTMLButton text={"Verstuur"} type="submit" />
+        <HTMLButton text={"Verstuur"} type="submit" loading={loading} />
       </form>
+      <div className="text-xs  opacity-80 -my-3 absolute -bottom-16">
+        *Deze site is beschermd door reCAPTCHA en de {""}
+        <Link
+          href="https://policies.google.com/privacy"
+          className="underline text-blue-500"
+        >
+          Privacyverklaring
+        </Link>
+        {""} en {""}
+        <Link
+          href="https://policies.google.com/terms"
+          className="underline text-blue-500"
+        >
+          Algemene voorwaarden
+        </Link>
+        {""} van Google zijn van toepassing.
+      </div>
     </>
   );
 }

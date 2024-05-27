@@ -297,6 +297,18 @@ const componentsConfig = [
   {
     name: "ContactForm",
     path: "organisms/ContactForm",
+    inputs: [
+      {
+        name: "text",
+        type: "string",
+        required: false,
+      },
+      {
+        name: "title",
+        type: "string",
+        required: false,
+      },
+    ],
     isRSC: false,
   },
 ];

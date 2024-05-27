@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
+const nodemailer = require("nodemailer");
 
 export async function POST(request: Request, response: Response) {
   const secretKey = process?.env?.RECAPTCHA_SECRET;
@@ -32,7 +33,67 @@ export async function POST(request: Request, response: Response) {
   }
 
   if (res && res.data?.success && res.data?.score > 0.5) {
-    // Send email here
+    const username = process.env.NEXT_PUBLIC_EMAIL_USERNAME;
+    const password = process.env.NEXT_PUBLIC_EMAIL_PASSWORD;
+    const myEmail = process.env.NEXT_PUBLIC_PERSONAL_EMAIL;
+
+    const name = postData.name;
+    const email = postData.email;
+    const message = postData.message;
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+
+      auth: {
+        user: myEmail,
+        pass: password,
+      },
+    });
+
+    try {
+      // Mail to admin
+      const mail = await transporter.sendMail({
+        from: email,
+        to: myEmail,
+        replyTo: email,
+        subject: "Bericht via contactformulier",
+        html: `
+          <div style="font-family: Arial, sans-serif; background-color: #FABC75; padding: 20px; color: black;">
+        <h2 style="">Bericht via contactformulier</h2>
+        <p style="color: #333333;"><span style="font-weight: 600;">Naam afzender:</span> ${name}</p>
+        <p style="color: #333333;"><span style="font-weight: 600">Email afzender:</span> ${email}</p>
+        <p style="color: #333333;"><span style="font-weight: 600">Bericht:</span> ${message}</p>
+          </div>
+        `,
+      });
+
+      // Mail to sender
+      const mailToSender = await transporter.sendMail({
+        from: myEmail,
+        to: email,
+        subject: "Bedankt voor je bericht!",
+        html: `
+        <div style="font-family: Arial, sans-serif; background-color: #FABC75; padding: 20px; color: black;">
+        <h2 style="">Ik heb je bericht ontvangen!</h2>
+        <p style="color: #333333;">Ik zal zo snel mogelijk reageren.</p>
+        <p style="color: #333333;">Groetjes, <br>Judith</p>
+
+        <img src="https://img.freepik.com/free-vector/hand-drawn-mountain-range-silhouette_23-2150429157.jpg?size=626&ext=jpg" alt="Judith's signature" style="width: 300px; height: auto; margin-top: 20px;">
+        </div>
+        `,
+      });
+
+      return NextResponse.json(
+        { message: "Success: email was sent" },
+        { status: 200 }
+      );
+    } catch (error) {
+      console.log(error);
+      return NextResponse.json(
+        { message: "COULD NOT SEND MESSAGE" },
+        { status: 500 }
+      );
+    }
   } else {
     console.log("fail: res.data?.score:", res.data?.score);
     return NextResponse.json({ success: false, name, score: res.data?.score });
