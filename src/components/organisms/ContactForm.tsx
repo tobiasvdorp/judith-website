@@ -38,6 +38,7 @@ export function ContactFormInside(props: ContactFormProps) {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(true);
+  const [modalName, setModalName] = useState("");
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
@@ -73,11 +74,12 @@ export function ContactFormInside(props: ContactFormProps) {
       });
 
       if (response.status === 200) {
+        setModalName(name);
+        setModal(true);
         setName("");
         setEmail("");
         setMessage("");
         setLoading(false);
-        setModal(true);
       } else {
         console.log("Form submission failed");
       }
@@ -97,7 +99,7 @@ export function ContactFormInside(props: ContactFormProps) {
             <Modal
               isOpen={modal}
               onClose={() => setModal(false)}
-              title="Bedankt!"
+              title={`Bedankt ${modalName.split(" ")[0]}!`}
             >
               <Text text="Ik heb je bericht ontvangen en zal zo snel mogelijk reageren. Je krijgt via de mail een bevestiging." />
             </Modal>
