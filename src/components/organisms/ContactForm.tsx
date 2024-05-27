@@ -39,14 +39,13 @@ export function ContactFormInside(props: ContactFormProps) {
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
   const [modalName, setModalName] = useState("");
+  const [error, setError] = useState("");
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleSubmitForm = function (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!executeRecaptcha) {
-      console.log("Execute recaptcha not available yet");
-
       return;
     }
 
@@ -56,35 +55,44 @@ export function ContactFormInside(props: ContactFormProps) {
   };
 
   const submitEnquiryForm = (gReCaptchaToken: string) => {
-    setLoading(true);
+    setLoading(true); // Start loading voor de asynchrone actie
     async function goAsync() {
-      const response = await axios({
-        method: "post",
-        url: "/api/contactFormSubmit",
-        data: {
-          name: name,
-          email: email,
-          message: message,
-          gRecaptchaToken: gReCaptchaToken,
-        },
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-      });
+      try {
+        const response = await axios({
+          method: "post",
+          url: "/api/contactFormSubmit",
+          data: {
+            name: name,
+            email: email,
+            message: message,
+            gRecaptchaToken: gReCaptchaToken,
+          },
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+          },
+        });
 
-      if (response.status === 200) {
-        setModalName(name);
-        setModal(true);
-        setName("");
-        setEmail("");
-        setMessage("");
-        setLoading(false);
-      } else {
-        console.log("Form submission failed");
+        if (response.status === 200) {
+          setModalName(name);
+          setModal(true);
+          setName("");
+          setEmail("");
+          setMessage("");
+        } else {
+          null;
+        }
+      } catch (error) {
+        setError(
+          "Er is iets misgegaan met het versturen van het formulier. Probeer het later opnieuw."
+        );
+      } finally {
+        setLoading(false); // Always stop loading
       }
     }
-    goAsync().then(() => {}); // suppress typescript error
+    goAsync().catch((error) => {
+      setLoading(false); // Stop loading
+    });
   };
 
   return (
@@ -138,7 +146,23 @@ export function ContactFormInside(props: ContactFormProps) {
           onChange={(e) => setMessage(e.target.value)}
         />
 
-        <HTMLButton text={"Verstuur"} type="submit" loading={loading} />
+        <AnimatePresence>
+          {error && (
+            <Modal
+              title="Oh nee!"
+              isOpen={error ? true : false}
+              onClose={() => setError("")}
+            >
+              {error}
+            </Modal>
+          )}
+        </AnimatePresence>
+        <HTMLButton
+          text={"Verstuur"}
+          type="submit"
+          loading={loading}
+          disabled={loading}
+        />
       </form>
       <div className="text-xs  opacity-80 -my-3 absolute -bottom-16">
         *Deze site is beschermd door reCAPTCHA en de {""}
