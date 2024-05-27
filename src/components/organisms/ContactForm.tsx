@@ -37,7 +37,7 @@ export function ContactFormInside(props: ContactFormProps) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const [modalName, setModalName] = useState("");
 
   const { executeRecaptcha } = useGoogleReCaptcha();
