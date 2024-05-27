@@ -33,9 +33,9 @@ export async function POST(request: Request, response: Response) {
   }
 
   if (res && res.data?.success && res.data?.score > 0.5) {
-    const username = process.env.NEXT_PUBLIC_EMAIL_USERNAME;
-    const password = process.env.NEXT_PUBLIC_EMAIL_PASSWORD;
-    const myEmail = process.env.NEXT_PUBLIC_PERSONAL_EMAIL;
+    const username = process.env.EMAIL_USERNAME;
+    const password = process.env.EMAIL_PASSWORD;
+    const myEmail = process.env.PERSONAL_EMAIL;
 
     const name = postData.name;
     const email = postData.email;
