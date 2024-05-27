@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 import { twMerge } from "tailwind-merge";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 type HTMLButtonProps = ComponentPropsWithoutRef<"button"> & {
   text: string;
   className?: string;
+  loading?: boolean;
 };
 
 export default function HTMLButton({
   text,
   className,
+  loading,
   ...rest
 }: HTMLButtonProps) {
   return (
@@ -20,7 +23,10 @@ export default function HTMLButton({
       )}
       {...rest}
     >
-      {text}
+      {loading && (
+        <AiOutlineLoading3Quarters className="animate-spin text-xl absolute" />
+      )}
+      <div className={`${loading && "opacity-0"}`}>{text}</div>
     </button>
   );
 }
