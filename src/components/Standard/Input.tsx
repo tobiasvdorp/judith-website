@@ -27,29 +27,21 @@ export default function Input({
   const labelStyles =
     "px-2 bg-neutral rounded-xl z-10 text-md duration-300 absolute -translate-y-6 peer-focus:font-bold top-2.5  left-2 origin-[0] peer-focus:start-0 peer-focus:gray-700 peer-placeholder-shown:scale-100  peer-placeholder-shown:translate-y-0 peer-focus:scale-80 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto";
 
-  if (isTextarea) {
-    return (
-      <div className={twMerge("relative z-0", className)}>
+  return (
+    <div className={twMerge("relative z-0", className)}>
+      {isTextarea ? (
         <textarea
           className={twMerge(inputStyles, inputClassName)}
           id={id}
           {...rest}
         ></textarea>
-        <label htmlFor={id} className={twMerge(labelStyles, labelClassName)}>
-          {label}
-        </label>
-        {children}
-      </div>
-    );
-  }
-
-  return (
-    <div className={twMerge("relative z-0", className)}>
-      <input
-        className={twMerge(inputStyles, inputClassName)}
-        id={id}
-        {...rest}
-      ></input>
+      ) : (
+        <input
+          className={twMerge(inputStyles, inputClassName)}
+          id={id}
+          {...rest}
+        ></input>
+      )}
       <label htmlFor={id} className={twMerge(labelStyles, labelClassName)}>
         {label}
       </label>
