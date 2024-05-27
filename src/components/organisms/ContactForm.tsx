@@ -55,7 +55,7 @@ export function ContactFormInside(props: ContactFormProps) {
   };
 
   const submitEnquiryForm = (gReCaptchaToken: string) => {
-    setLoading(true); // Start loading voor de asynchrone actie
+    setLoading(true); // Start loading
     async function goAsync() {
       try {
         const response = await axios({
@@ -161,6 +161,7 @@ export function ContactFormInside(props: ContactFormProps) {
           text={"Verstuur"}
           type="submit"
           loading={loading}
+          loadingText="Versturen..."
           disabled={loading}
         />
       </form>
