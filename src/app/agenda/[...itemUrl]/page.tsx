@@ -10,6 +10,7 @@ import {
   getBuilderSearchParams,
 } from "@builder.io/sdk-react-nextjs";
 import { Metadata } from "next";
+import Title from "@/components/Standard/Title";
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
@@ -80,7 +81,8 @@ export default async function Page(props: PageProps) {
 
   return (
     <div>
-      <MainWrapper>
+      <MainWrapper className="gap-3 items-start max-w-[850px]">
+        <Title text={content.data?.title || ""} order={1} />
         <Content
           content={content}
           model="agenda-item"
