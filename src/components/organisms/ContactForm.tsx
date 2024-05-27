@@ -29,7 +29,7 @@ export function ContactFormInside() {
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const handleSubmitForm = function (e: any) {
+  const handleSubmitForm = function (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!executeRecaptcha) {
       console.log("Execute recaptcha not available yet");
