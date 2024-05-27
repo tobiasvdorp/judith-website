@@ -60,3 +60,7 @@ a:not(nav a):not(.button):not(.card) {
 .important {
   display: none;
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
