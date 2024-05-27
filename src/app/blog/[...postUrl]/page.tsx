@@ -46,7 +46,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     model: "blogpost",
     apiKey,
     options: {
-      fields: "data.title,data.shortText",
+      fields: "data.title,data.shortText,data.tags",
     },
     userAttributes: { pageUrl },
     query: {
@@ -62,8 +62,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     );
   } else {
     return returnMetadata(
-      content.data?.title || "",
-      content.data?.shortText || ""
+      content.data?.title || "", // Title
+      content.data?.shortText || "", // Description
+      content.data?.tags // Keywords
     );
   }
 }

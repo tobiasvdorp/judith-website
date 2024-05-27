@@ -30,9 +30,9 @@ export default async function BlogPosts() {
           <div key={post.id} className="w-full">
             <Link
               href={`/blog/${post.data?.url}`}
-              className="h-96 group overflow-hidden w-full flex flex-col items-center rounded-lg shadow hover:bg-neutral-dark card bg-neutral-light drop-shadow-sm hover:scale-[1.01] duration-75 hover:border-gray-300 border-2 shadow-neutral-dark border-neutral-dark"
+              className="h-[400px] sm:h-96 group overflow-hidden w-full flex flex-col items-center rounded-lg shadow hover:bg-neutral-dark card bg-neutral-light drop-shadow-sm hover:scale-[1.01] duration-75 hover:border-gray-300 border-2 shadow-neutral-dark border-neutral-dark"
             >
-              <div className="relative h-64 w-full group-hover:bg-primary">
+              <div className="relative h-full w-full group-hover:bg-primary">
                 <Image
                   src={post.data?.mainImage}
                   alt="alt"
@@ -43,8 +43,8 @@ export default async function BlogPosts() {
                 />
               </div>
 
-              <div className="flex flex-col justify-between self-start p-4  duration-200 leading-normal relative w-full">
-                <div className="absolute -top-2 group-hover:-top-4 right-2 px-2 bg-neutral rounded-xl group-hover:bg-neutral-dark duration-75 ">
+              <div className="flex flex-col justify-between self-start p-4  duration-200 leading-normal relative w-full h-fit">
+                <div className="absolute -top-2 group-hover:-top-4 right-2 px-2 bg-neutral-light rounded-xl group-hover:bg-neutral-dark duration-75 ">
                   {post.data?.date}
                 </div>
                 <h2 className="font-rodetta text-xl font-bold  duration-100">
