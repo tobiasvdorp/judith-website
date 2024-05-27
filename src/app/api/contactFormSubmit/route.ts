@@ -45,12 +45,22 @@ export async function POST(request: Request, response: Response) {
         to: process.env.PERSONAL_EMAIL,
         replyTo: email,
         subject: "Bericht via contactformulier",
-        html: `<div style="font-family: Arial, sans-serif; background-color: #FABC75; padding: 20px; color: black;">
-                        <h2 style="">Bericht via contactformulier</h2>
-                        <p style="color: #333333;"><span style="font-weight: 600;">Naam afzender:</span> ${name}</p>
-                        <p style="color: #333333;"><span style="font-weight: 600">Email afzender:</span> ${email}</p>
-                        <p style="color: #333333;"><span style="font-weight: 600">Bericht:</span> ${message}</p>
-                       </div>`,
+        html: `<!DOCTYPE html>
+        <html>
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; }
+          </style>
+        </head>
+        <body>
+          <div style="background-color: #FABC75; padding: 20px; color: black;">
+            <h2>Bericht via contactformulier</h2>
+            <p><strong>Naam afzender:</strong> {{name}}</p>
+            <p><strong>Email afzender:</strong> {{email}}</p>
+            <p><strong>Bericht:</strong> {{message}}</p>
+          </div>
+        </body>
+        </html>`,
       });
 
       // Mail naar zender
@@ -58,11 +68,22 @@ export async function POST(request: Request, response: Response) {
         from: process.env.PERSONAL_EMAIL,
         to: email,
         subject: "Bedankt voor je bericht!",
-        html: `<div style="font-family: Arial, sans-serif; background-color: #FABC75; padding: 20px; color: black;">
-                        <h2 style="">Ik heb je bericht ontvangen!</h2>
-                        <p style="color: #333333;">Ik zal zo snel mogelijk reageren.</p>
-                        <p style="color: #333333;">Groetjes, <br>Judith</p>
-                        </div>`,
+        html: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; }
+          </style>
+        </head>
+        <body>
+          <div style="background-color: #FABC75; padding: 20px; color: black;">
+            <h2>Bedankt voor je bericht!</h2>
+            <p>Ik heb je bericht ontvangen en zal zo snel mogelijk reageren. Je krijgt via de mail een bevestiging.</p>
+          </div>
+        </body>
+        </html>
+        `,
       });
 
       // Controleer of beide e-mails zijn verzonden
