@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import Title from "../Standard/Title";
+import Title from "@/components/Standard/Title";
 
 type SectionTitle = {
   title: string;

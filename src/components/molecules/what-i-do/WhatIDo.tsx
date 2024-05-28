@@ -1,9 +1,9 @@
 import SectionTitle from "@/components/ui/SectionTitle";
-import type { SectionCardProps } from "../molecules/what-i-do/SectionCard";
+import type { SectionCardProps } from "@/components/molecules/what-i-do/SectionCard";
 import Text from "@/components/Standard/Text";
 import { FaProjectDiagram, FaHandsHelping } from "react-icons/fa";
 import { FaMountainSun } from "react-icons/fa6";
-import Button from "../Standard/Button";
+import Button from "@/components/Standard/Button";
 type WhatIDoProps = {
   title: string;
   description?: string;

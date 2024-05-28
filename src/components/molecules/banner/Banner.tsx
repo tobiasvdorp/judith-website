@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/legacy/image";
 import Title from "@/components/Standard/Title";
 import Text from "@/components/Standard/Text";
@@ -14,7 +15,7 @@ export default function Banner(props: BannerProps) {
   return (
     <>
       {/* Container */}
-      <header className="h-screen w-screen flex items-center justify-center bg-primary relative">
+      <header className="h-screen w-screen flex items-center justify-center bg-neutral-dark relative">
         {/* Background image */}
         <Image
           src={props.imageUrl}

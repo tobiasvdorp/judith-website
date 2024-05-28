@@ -1,6 +1,6 @@
 import { RegisteredComponent } from "@builder.io/sdk-react-nextjs";
 import Button from "@/components/Standard/Button";
-import WhatIDo from "@/components/organisms/WhatIDo";
+import WhatIDo from "@/components/molecules/what-i-do/WhatIDo";
 import { Children } from "react";
 
 // export const customComponents: RegisteredComponent[] = [
@@ -84,7 +84,7 @@ const componentsConfig = [
 
   {
     name: "WhatIDo",
-    path: "organisms/WhatIDo",
+    path: "molecules/what-i-do/WhatIDo",
     inputs: [
       {
         name: "title",

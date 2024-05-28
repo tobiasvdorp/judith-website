@@ -1,9 +1,9 @@
 import { fetchEntries } from "@builder.io/sdk-react-nextjs";
 import Link from "next/link";
 import Image from "next/legacy/image";
-import AgendaItemsList from "../molecules/AgendaItemsList";
-import SectionTitle from "../ui/SectionTitle";
-import Button from "../Standard/Button";
+import AgendaItemsList from "@/components/molecules/AgendaItemsList";
+import SectionTitle from "@/components/ui/SectionTitle";
+import Button from "@/components/Standard/Button";
 
 type AgendaItemsProps = {
   agendaItems: AgendaItem[];

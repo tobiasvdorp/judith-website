@@ -1,5 +1,5 @@
-import { TextProps } from "../Standard/Text";
-import Text from "../Standard/Text";
+import { TextProps } from "@/components/Standard/Text";
+import Text from "@/components/Standard/Text";
 import Image from "next/legacy/image";
 type WhoIAmProps = {
   image: string;

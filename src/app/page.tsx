@@ -26,7 +26,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     },
     userAttributes: { urlPath: pageUrl },
   });
-  console.log(content);
 
   if (!content) {
     return returnMetadata(

@@ -36,7 +36,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     },
   });
 
-  console.log(content);
   if (!content) {
     return returnMetadata(
       "Pagina niet gevonden",

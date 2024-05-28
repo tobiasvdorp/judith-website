@@ -1,14 +1,14 @@
 "use client";
-import Input from "../Standard/Input";
-import HTMLButton from "../Standard/HTMLbutton";
+import Input from "@/components/Standard/Input";
+import HTMLButton from "@/components/Standard/HTMLbutton";
 import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import GoogleCaptchaWrapper from "../layouts/google-captcha-wrapper";
+import GoogleCaptchaWrapper from "@/components/layouts/google-captcha-wrapper";
 import axios from "axios";
 import Link from "next/link";
-import Text from "../Standard/Text";
-import Title from "../Standard/Title";
-import Modal from "./Modal";
+import Text from "@/components/Standard/Text";
+import Title from "@/components/Standard/Title";
+import Modal from "@/components/organisms/Modal";
 import { AnimatePresence } from "framer-motion";
 
 type PostData = {

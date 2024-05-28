@@ -7,7 +7,7 @@ import {
 import NotFound from "../not-found";
 import MainWrapper from "@/components/layouts/MainWrapper";
 import Banner from "@/components/molecules/banner/Banner";
-import { loadComponents } from "../componentsConfig";
+import { loadComponents } from "@/app/componentsConfig";
 import { Metadata } from "next";
 import { PageProps } from "@/types/page";
 import { returnMetadata } from "@/lib/utils";

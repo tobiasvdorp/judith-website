@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/legacy/image";
 import Link from "next/link";
-import { AgendaItem } from "../organisms/AgendaItems";
+import { AgendaItem } from "@/components/organisms/AgendaItems";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import Input from "../Standard/Input";
+import Input from "@/components/Standard/Input";
 import {
   MdOutlineContentPasteSearch,
   MdOutlineSearchOff,

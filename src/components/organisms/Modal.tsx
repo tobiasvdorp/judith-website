@@ -1,9 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { createPortal } from "react-dom";
-import Button from "../Standard/Button";
-import Title from "../Standard/Title";
-import HTMLButton from "../Standard/HTMLbutton";
+import Title from "@/components/Standard/Title";
+import HTMLButton from "@/components/Standard/HTMLbutton";
 
 type ModalProps = {
   isOpen: boolean;
