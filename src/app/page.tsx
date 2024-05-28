@@ -14,29 +14,32 @@ import { PageProps } from "@/types/page";
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
 // Generate metadata for the homepage by fetching the homepage entry
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { params } = props;
+  const pageUrl = "/";
+
   const content = await fetchOneEntry({
     model: "page",
     apiKey,
     options: {
-      fields: "data.title,data.description",
+      fields: "data.title,data.description,data.bannerImage",
     },
-    // query: {
-    //   "data.url": "/",
-    // },
+    userAttributes: { urlPath: pageUrl },
   });
+  console.log(content);
 
-  // If the homepage doesn't exist, return a 404 page
   if (!content) {
     return returnMetadata(
       "Pagina niet gevonden",
       "Het lijkt erop dat deze pagina niet bestaat."
-    );
+    ) as Metadata;
   } else {
     return returnMetadata(
-      content.data?.title ?? "",
-      content.data?.description ?? ""
-    );
+      content.data?.title ?? "", // Title
+      content.data?.description ?? "", // Description
+      undefined, // Keywords
+      content.data?.bannerImage || "" // Image URL
+    ) as Metadata;
   }
 }
 
