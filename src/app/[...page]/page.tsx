@@ -41,7 +41,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     model: "page",
     apiKey,
     options: {
-      fields: "data.title,data.description",
+      fields: "data.title,data.description,data.bannerImage",
     },
     userAttributes: { urlPath: pageUrl },
   });
@@ -50,12 +50,14 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     return returnMetadata(
       "Pagina niet gevonden",
       "Het lijkt erop dat deze pagina niet bestaat."
-    );
+    ) as Metadata;
   } else {
     return returnMetadata(
-      content.data?.title ?? "",
-      content.data?.description ?? ""
-    );
+      content.data?.title ?? "", // Title
+      content.data?.description ?? "", // Description
+      undefined, // Keywords
+      content.data?.bannerImage || "" // Image URL
+    ) as Metadata;
   }
 }
 

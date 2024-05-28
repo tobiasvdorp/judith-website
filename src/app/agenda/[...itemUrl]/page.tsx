@@ -2,7 +2,7 @@ import NotFound from "@/app/not-found";
 import { loadComponents } from "@/app/componentsConfig";
 import MainWrapper from "@/components/layouts/MainWrapper";
 import { returnMetadata } from "@/lib/utils";
-
+import Image from "next/image";
 import {
   Content,
   fetchEntries,
@@ -23,27 +23,32 @@ type PageProps = {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { params } = props;
-  const pageUrl = "/" + params?.itemUrl?.join("/") || "";
+  const pageUrl = props.params.itemUrl.join("/");
 
   const content = await fetchOneEntry({
     model: "agenda-item",
     apiKey,
     options: {
-      fields: "data.title,data.shortText",
+      fields: "data.title,data.shortText,data.tags,data.mainImage",
     },
-    userAttributes: { urlPath: pageUrl },
+    query: {
+      "data.url": pageUrl,
+    },
   });
 
+  console.log(content);
   if (!content) {
     return returnMetadata(
       "Pagina niet gevonden",
       "Het lijkt erop dat deze pagina niet bestaat."
-    );
+    ) as Metadata;
   } else {
     return returnMetadata(
       content.data?.title ?? "",
-      content.data?.shortText ?? ""
-    );
+      content.data?.shortText ?? "",
+      content.data?.tags,
+      content.data?.mainImage || ""
+    ) as Metadata;
   }
 }
 export async function generateStaticParams() {

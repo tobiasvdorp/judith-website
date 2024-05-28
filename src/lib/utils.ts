@@ -8,7 +8,8 @@ export function cn(...inputs: ClassValue[]) {
 export function returnMetadata(
   title: string,
   description: string,
-  keywords?: string[]
+  keywords?: string[],
+  imageUrl?: string
 ) {
   return {
     title: title + " - Judith van Dorp",
@@ -22,6 +23,14 @@ export function returnMetadata(
       url: "https://judithvandorp.com",
       title: title + " - Judith van Dorp",
       description: description,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
   };
 }
