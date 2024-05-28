@@ -23,14 +23,17 @@ export function returnMetadata(
       url: "https://judithvandorp.com",
       title: title + " - Judith van Dorp",
       description: description,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      // return images if there is an image url
+      images: imageUrl
+        ? [
+            {
+              url: imageUrl,
+              width: 1200,
+              height: 630,
+              alt: title,
+            },
+          ]
+        : [],
     },
   };
 }
