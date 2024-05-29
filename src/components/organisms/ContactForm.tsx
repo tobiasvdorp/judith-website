@@ -172,14 +172,14 @@ export function ContactFormInside(props: ContactFormProps) {
         *Deze site is beschermd door reCAPTCHA en de {""}
         <Link
           href="https://policies.google.com/privacy"
-          className="underline text-blue-500"
+          className="underline text-blue-800"
         >
           Privacyverklaring
         </Link>
         {""} en {""}
         <Link
           href="https://policies.google.com/terms"
-          className="underline text-blue-500"
+          className="underline text-blue-800"
         >
           Algemene voorwaarden
         </Link>
