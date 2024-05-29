@@ -9,6 +9,7 @@ import {
   MdOutlineContentPasteSearch,
   MdOutlineSearchOff,
 } from "react-icons/md";
+import Title from "../Standard/Title";
 
 type AgendaItemsProps = {
   agendaItems: AgendaItem[];
@@ -91,7 +92,11 @@ export default function AgendaItemsList(agendaItems: AgendaItemsProps) {
             />
           </div>
           <div className="w-full">
-            <h2 className="font-rodetta text-xl">{item.data.title}</h2>
+            <Title
+              className="font-rodetta text-xl"
+              text={item.data.title}
+              order={agendaItems.isHomeComponent ? 3 : 2}
+            ></Title>
             <p className="">{item.data.shortText}</p>
           </div>
         </Link>
