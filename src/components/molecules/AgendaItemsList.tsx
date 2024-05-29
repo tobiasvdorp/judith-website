@@ -40,12 +40,13 @@ export default function AgendaItemsList(agendaItems: AgendaItemsProps) {
           id="search"
           label="Activiteit zoeken"
           onChange={(e) => setSearchTerm(e.target.value)}
-          inputClassName="pl-7 max-w-full w-screen mb-3"
+          className="mb-3"
+          inputClassName="pl-7 max-w-full w-screen "
           labelClassName="peer-placeholder-shown:left-6"
         >
           <FaSearch className="absolute top-1/2 -translate-y-1/2 left-2 z-20" />
           {searchTerm.length !== 0 && results.length !== 0 && (
-            <p className="absolute -bottom-3">
+            <p className="absolute -bottom-6">
               {results.length} resultaten voor &quot;{searchTerm}&quot;
             </p>
           )}
