@@ -84,10 +84,15 @@ export default async function Page(props: PageProps) {
   }
 
   return (
-    <div className="prose prose-md prose-h2:text-xl prose-li:m-1 prose-h3:text-lg prose-h4:text-base prose-p:m-0 prose-ul:m-0 prose-headings:font-rodetta prose-headings:font-bold prose-headings:m-0">
-      <MainWrapper className="max-w-[850px]">
+    <MainWrapper className="max-w-[850px] ">
+      <div className="w-full flex items-center justify-center flex-col">
         <div>
-          <Title text={content.data?.title || ""} order={1} />
+          <Title
+            text={content.data?.title || ""}
+            order={1}
+            className="text-left w-full"
+          />
+
           <Content
             content={content}
             model="agenda-item"
@@ -95,8 +100,8 @@ export default async function Page(props: PageProps) {
             customComponents={customComponents}
           />
         </div>
-      </MainWrapper>
-    </div>
+      </div>
+    </MainWrapper>
   );
 }
 export const revalidate = 1;
