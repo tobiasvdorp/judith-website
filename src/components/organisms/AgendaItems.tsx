@@ -1,6 +1,4 @@
 import { fetchEntries } from "@builder.io/sdk-react-nextjs";
-import Link from "next/link";
-import Image from "next/legacy/image";
 import AgendaItemsList from "@/components/molecules/AgendaItemsList";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/Standard/Button";
@@ -20,6 +18,8 @@ export type AgendaItem = {
     url: string;
     mainImage: string;
   };
+  formattedDay: string;
+  formattedMonth: string;
 };
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
@@ -37,6 +37,25 @@ export default async function AgendaItems(props: AgendaItemsProps) {
     return null;
   }
 
+  function formatDay(date: string) {
+    const dateObj = new Date(date);
+    return dateObj.toLocaleString("nl-NL", { day: "numeric" });
+  }
+
+  function formatMonth(date: string) {
+    const dateObj = new Date(date);
+    return dateObj.toLocaleString("nl-NL", { month: "short" });
+  }
+
+  const formattedAgendaItems = agendaItems.map((item) => {
+    const formattedDay = formatDay(item.data.date);
+    const formattedMonth = formatMonth(item.data.date);
+    return {
+      ...item,
+      formattedDay,
+      formattedMonth,
+    };
+  });
   return (
     <>
       <div className="">
@@ -45,7 +64,7 @@ export default async function AgendaItems(props: AgendaItemsProps) {
         )}
         <div className="grid grid-cols-1 gap-4 ">
           <AgendaItemsList
-            agendaItems={agendaItems}
+            agendaItems={formattedAgendaItems}
             isHomeComponent={props.isHomeComponent}
           />
         </div>

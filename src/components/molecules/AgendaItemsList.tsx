@@ -16,16 +16,6 @@ type AgendaItemsProps = {
   // title: string;
 };
 export default function AgendaItemsList(agendaItems: AgendaItemsProps) {
-  function formatDay(date: string) {
-    const dateObj = new Date(date);
-    return dateObj.toLocaleString("nl-NL", { day: "numeric" });
-  }
-
-  function formatMonth(date: string) {
-    const dateObj = new Date(date);
-    return dateObj.toLocaleString("nl-NL", { month: "short" });
-  }
-
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState(agendaItems.agendaItems);
 
@@ -86,9 +76,9 @@ export default function AgendaItemsList(agendaItems: AgendaItemsProps) {
           <div className="relative w-32 h-28 rounded-md overflow-hidden bg-primary-dark z-0">
             <div className="absolute z-10 text-white text-center text-3xl font-rodetta flex items-center justify-center w-full h-full ">
               <p className="drop-shadow-[0_2px_2px_rgba(0,0,0)]">
-                {formatDay(item.data.date)}
+                {item.formattedDay}
                 <br></br>
-                {formatMonth(item.data.date)}
+                {item.formattedMonth}
               </p>
             </div>
             <Image
