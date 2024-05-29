@@ -357,7 +357,7 @@ const componentsConfig = [
         required: false,
       },
     ],
-    isRSC: false,
+    isRSC: true,
   },
 ];
 
