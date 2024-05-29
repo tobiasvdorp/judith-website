@@ -4,6 +4,7 @@ import Text from "@/components/Standard/Text";
 import { FaProjectDiagram, FaHandsHelping } from "react-icons/fa";
 import { FaMountainSun } from "react-icons/fa6";
 import Button from "@/components/Standard/Button";
+import Title from "@/components/Standard/Title";
 type WhatIDoProps = {
   title: string;
   description?: string;
@@ -21,7 +22,7 @@ export default function WhatIDo(props: WhatIDoProps) {
           </div>
         )}
         <div className="flex items-center justify-center">
-          <div className="flex flex-col lg:flex-row gap-2 gap-y-6 w-full  items-center justify-center ">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-2 gap-y-10 w-full items-start justify-items-center h-fit">
             {props.sectionCards &&
               props.sectionCards.map((sectionCard, index) => (
                 // <SectionCard
@@ -31,24 +32,27 @@ export default function WhatIDo(props: WhatIDoProps) {
                 // />
 
                 <div
-                  className=" bg-neutral-light w-full lg:h-64 relative rounded-xl p-6 border box-shadow-md max-w-xl"
+                  className=" bg-neutral-light w-full h-full relative rounded-xl p-6 border box-shadow-md max-w-lg flex items-center flex-col justify-between gap-3"
                   key={index}
                 >
-                  <div className="text-xl font-rodetta text-neutral-600 flex items-center gap-4">
-                    <div className="w-5">
+                  <div className="w-full flex justify-center">
+                    {
                       {
-                        {
-                          Projecten: <FaProjectDiagram />,
-                          Coaching: <FaHandsHelping />,
-                          Buitenavonturen: <FaMountainSun />,
-                        }[sectionCard.title]
-                      }
-                    </div>
-                    {sectionCard.title}
+                        Projecten: <FaProjectDiagram className="text-4xl " />,
+                        Coaching: <FaHandsHelping className="text-4xl" />,
+                        Buitenavonturen: <FaMountainSun className="text-4xl" />,
+                      }[sectionCard.title]
+                    }
                   </div>
-                  <div className="text-neutral-500 text-sm max-w-full mb-auto">
+                  {/* Line */}
+                  <Title
+                    className="text-xl border-t-4 w-fit border-primary"
+                    text={sectionCard.title}
+                    order={3}
+                  ></Title>
+                  <p className="text-neutral-500 text-sm max-w-full mb-auto pb-3">
                     {sectionCard.description}
-                  </div>
+                  </p>
                   {/* <CardItem translateZ="100" className="w-full h-full mt-4">
                         <Image
                           src={sectionCard.imageSrc}
@@ -56,13 +60,12 @@ export default function WhatIDo(props: WhatIDoProps) {
                           alt="thumbnail"
                         />
                       </CardItem> */}
-                  <div className="flex lg:justify-between justify-end items-center w-full pt-2 lg:pb-0">
-                    <Button
-                      text="Meer informatie"
-                      url={sectionCard.buttonRef}
-                      className="lg:absolute lg:-bottom-5 lg:left-1/2 lg:-translate-x-1/2 w-fit text-nowrap "
-                    ></Button>
-                  </div>
+
+                  <Button
+                    text="Meer informatie"
+                    url={sectionCard.buttonRef}
+                    className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-fit text-nowrap "
+                  ></Button>
                 </div>
               ))}
           </div>
