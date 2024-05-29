@@ -359,6 +359,19 @@ const componentsConfig = [
     ],
     isRSC: true,
   },
+
+  {
+    name: "NoContent",
+    path: "molecules/NoContent",
+    inputs: [
+      {
+        name: "text",
+        type: "string",
+        required: true,
+      },
+    ],
+    isRSC: true,
+  },
 ];
 
 export default componentsConfig;
