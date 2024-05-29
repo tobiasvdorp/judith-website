@@ -34,6 +34,7 @@ export function returnMetadata(
             },
           ]
         : [],
+      siteName: "Judith van Dorp",
     },
   };
 }
