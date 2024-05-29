@@ -84,10 +84,10 @@ export default async function Page(props: PageProps) {
   }
 
   return (
-    <div>
-      <MainWrapper className="gap-3 items-start max-w-[850px]">
-        <Title text={content.data?.title || ""} order={1} />
-        <div className="prose prose-md prose-h2:text-xl prose-li:m-1 prose-h3:text-lg prose-h4:text-base prose-p:m-0 prose-ul:m-0 prose-headings:font-rodetta prose-headings:font-bold prose-headings:m-0">
+    <div className="prose prose-md prose-h2:text-xl prose-li:m-1 prose-h3:text-lg prose-h4:text-base prose-p:m-0 prose-ul:m-0 prose-headings:font-rodetta prose-headings:font-bold prose-headings:m-0">
+      <MainWrapper className="max-w-[850px]">
+        <div>
+          <Title text={content.data?.title || ""} order={1} />
           <Content
             content={content}
             model="agenda-item"
