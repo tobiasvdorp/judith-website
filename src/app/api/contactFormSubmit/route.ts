@@ -55,9 +55,9 @@ export async function POST(request: Request, response: Response) {
         <body>
           <div style="background-color: #FABC75; padding: 20px; color: black;">
             <h2>Bericht via contactformulier</h2>
-            <p><strong>Naam afzender:</strong> {{name}}</p>
-            <p><strong>Email afzender:</strong> {{email}}</p>
-            <p><strong>Bericht:</strong> {{message}}</p>
+            <p><strong>Naam afzender:</strong> ${name}</p>
+            <p><strong>Email afzender:</strong> ${email}</p>
+            <p><strong>Bericht:</strong> ${message}</p>
           </div>
         </body>
         </html>`,
