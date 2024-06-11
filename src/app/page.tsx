@@ -44,16 +44,13 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function HomePage(props: PageProps) {
   const customComponents = await loadComponents();
-  const urlPath = "/" + (props.params?.page?.join("/") || "");
+  const urlPath = "/";
 
   const content = await fetchOneEntry({
     model: "page",
     apiKey,
-    options: getBuilderSearchParams({}),
+    options: getBuilderSearchParams(props.searchParams),
     userAttributes: { urlPath },
-    // query: {
-    //   "data.url": "/",
-    // },
   });
 
   if (!content) {
