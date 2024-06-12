@@ -79,7 +79,7 @@ export async function POST(request: Request, response: Response) {
         <body>
           <div style="background-color: #FABC75; padding: 20px; color: black;">
             <h2>Bedankt voor je bericht!</h2>
-            <p>Ik heb je bericht ontvangen en zal zo snel mogelijk reageren. Je krijgt via de mail een bevestiging.</p>
+            <p>Ik heb je bericht ontvangen en zal zo snel mogelijk reageren. </p>
           </div>
         </body>
         </html>
