@@ -41,7 +41,7 @@ export default async function RootLayout({
   });
 
   return (
-    <html lang="en">
+    <html lang="nl">
       <body
         className={`${space.variable} ${rodetta.variable} font-space bg-neutral`}
       >
