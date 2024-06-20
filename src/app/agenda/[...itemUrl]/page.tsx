@@ -103,7 +103,7 @@ export default async function Page(props: PageProps) {
           className="text-left w-full pt-3"
         />
 
-        <div className="w-full">
+        <div className="w-full agenda">
           <Content
             content={content}
             model="agenda-item"

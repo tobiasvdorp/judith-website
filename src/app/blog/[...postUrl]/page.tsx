@@ -95,7 +95,7 @@ export default async function Page(props: PageProps) {
   // Render the post
   return (
     <>
-      <div className="prose prose-md prose-h2:text-xl prose-li:m-1 prose-h3:text-lg prose-h4:text-base prose-p:m-0 prose-ul:m-0 prose-headings:font-rodetta prose-headings:font-bold prose-headings:m-0">
+      <div className="blog prose  max-w-full mx-auto prose-md prose-h2:text-xl prose-li:m-1 prose-h3:text-lg prose-h4:text-base prose-p:m-0 prose-ul:m-0 prose-headings:font-rodetta prose-headings:font-bold prose-headings:m-0">
         <MainWrapper className="max-w-[750px] gap-2">
           <article className="w-full">
             <div className="w-full relative h-96">

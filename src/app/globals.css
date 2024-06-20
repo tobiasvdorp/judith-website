@@ -76,7 +76,8 @@ a:not(nav a):not(.button):not(.card) {
 }
 
 /* Prose styles */
-.prose {
+.blog .prose,
+.agenda .prose {
   max-width: 100%;
   margin: 0 auto;
 }
