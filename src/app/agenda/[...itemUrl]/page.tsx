@@ -84,15 +84,26 @@ export default async function Page(props: PageProps) {
   }
 
   return (
-    <MainWrapper className="max-w-[850px] ">
+    <MainWrapper className="max-w-[750px] ">
       <div className="w-full flex items-center justify-center flex-col">
-        <div>
-          <Title
-            text={content.data?.title || ""}
-            order={1}
-            className="text-left w-full"
+        {/* <div> */}
+        <div className="w-full relative h-96">
+          <Image
+            src={content.data?.mainImage}
+            alt="alt"
+            layout="fill"
+            objectFit="cover"
+            priority={true}
+            sizes={`(max-width: 850px) 90vw, 800px`}
           />
+        </div>
+        <Title
+          text={content.data?.title || ""}
+          order={1}
+          className="text-left w-full pt-3"
+        />
 
+        <div className="w-full">
           <Content
             content={content}
             model="agenda-item"
@@ -101,6 +112,7 @@ export default async function Page(props: PageProps) {
           />
         </div>
       </div>
+      {/* </div> */}
     </MainWrapper>
   );
 }

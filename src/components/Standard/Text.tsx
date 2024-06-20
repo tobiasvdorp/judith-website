@@ -23,7 +23,7 @@ export default function Text(props: TextProps) {
       {/* {props.title && <Title text={props.title} order={2} />} */}
       <div
         className={twMerge(
-          `font-space pb-2 [&_a]:underline] prose prose-md prose-h2:text-3xl prose-li:m-1 prose-h3:text-lg prose-h4:text-base prose-p:m-0 prose-ul:m-0 prose-headings:font-rodetta prose-headings:font-bold prose-headings:m-0 `,
+          `w-full font-space pb-2 prose prose-md prose-h2:text-3xl prose-li:m-1 prose-h3:text-lg prose-h4:text-base prose-p:m-0 prose-ul:m-0 prose-headings:font-rodetta prose-headings:font-bold prose-headings:m-0`,
           props.className
         )}
         dangerouslySetInnerHTML={{ __html: props.text || "" }}
