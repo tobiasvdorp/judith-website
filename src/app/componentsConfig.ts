@@ -248,55 +248,6 @@ const componentsConfig = [
     isRSC: false,
   },
   {
-    name: "ProjectSlider",
-    path: "organisms/ProjectSlider",
-    inputs: [
-      {
-        name: "projects",
-        type: "list",
-        subFields: [
-          {
-            name: "title",
-            type: "string",
-            required: true,
-            defaultValue: "Title",
-          },
-          {
-            name: "shortDescription",
-            type: "text",
-            required: true,
-            defaultValue: "Short description",
-          },
-          {
-            name: "description",
-            type: "richText",
-            required: true,
-            defaultValue: "Description",
-          },
-          {
-            name: "image",
-            type: "file",
-            allowedFileTypes: ["png", "jpg", "webp", "svg", "jpeg"],
-            required: true,
-          },
-        ],
-        required: true,
-      },
-      {
-        name: "title",
-        type: "string",
-        required: false,
-      },
-      {
-        name: "description",
-        type: "string",
-        required: false,
-      },
-    ],
-    isRSC: true,
-  },
-
-  {
     name: "NoContent",
     path: "molecules/NoContent",
     inputs: [
