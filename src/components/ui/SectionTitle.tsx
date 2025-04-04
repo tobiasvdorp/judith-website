@@ -1,11 +1,12 @@
 import { twMerge } from "tailwind-merge";
 import Title from "@/components/Standard/Title";
 
-type SectionTitle = {
+type SectionTitleProps = {
   title: string;
   className?: string;
 };
-export default function SectionTitle({ title, className }: SectionTitle) {
+
+export default function SectionTitle({ title, className }: SectionTitleProps) {
   return (
     <>
       <div

@@ -22,7 +22,6 @@ type PageProps = {
 };
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const { params } = props;
   const pageUrl = props.params.itemUrl.join("/");
 
   const content = await fetchOneEntry({

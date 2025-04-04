@@ -11,14 +11,6 @@ import Title from "@/components/Standard/Title";
 import Modal from "@/components/organisms/Modal";
 import { AnimatePresence } from "framer-motion";
 
-type PostData = {
-  gRecaptchaToken: string;
-  name: string;
-  email: string;
-  message: string;
-  important: string;
-};
-
 type ContactFormProps = {
   title?: string;
   text?: string;
@@ -82,7 +74,7 @@ export function ContactFormInside(props: ContactFormProps) {
         } else {
           null;
         }
-      } catch (error) {
+      } catch (err) {
         setError(
           "Er is iets misgegaan met het versturen van het formulier. Probeer het later opnieuw."
         );
@@ -90,7 +82,7 @@ export function ContactFormInside(props: ContactFormProps) {
         setLoading(false); // Always stop loading
       }
     }
-    goAsync().catch((error) => {
+    goAsync().catch(() => {
       setLoading(false); // Stop loading
     });
   };

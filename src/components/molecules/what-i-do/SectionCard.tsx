@@ -1,8 +1,6 @@
 import Image from "next/legacy/image";
 import Title from "@/components/Standard/Title";
 import Text from "@/components/Standard/Text";
-
-import { twMerge } from "tailwind-merge";
 import Button from "@/components/Standard/Button";
 
 export type SectionCardProps = {

@@ -1,5 +1,4 @@
-import { Component, ComponentPropsWithoutRef } from "react";
-import { FaSearch } from "react-icons/fa";
+import { ComponentPropsWithoutRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 type InputProps = ComponentPropsWithoutRef<"input"> &

@@ -14,8 +14,7 @@ import { PageProps } from "@/types/page";
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
 
 // Generate metadata for the homepage by fetching the homepage entry
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const { params } = props;
+export async function generateMetadata(): Promise<Metadata> {
   const pageUrl = "/";
 
   const content = await fetchOneEntry({

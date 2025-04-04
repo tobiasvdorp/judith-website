@@ -2,13 +2,6 @@ import { fetchEntries } from "@builder.io/sdk-react-nextjs";
 import Link from "next/link";
 import Image from "next/legacy/image";
 
-type BlogPostProps = {
-  title: string;
-  shortText: string;
-  imageUrl: string;
-  url: string;
-};
-
 export default async function BlogPosts() {
   const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "";
   const blogPosts = await fetchEntries({

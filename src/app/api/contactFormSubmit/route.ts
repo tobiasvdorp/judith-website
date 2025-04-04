@@ -1,15 +1,17 @@
-import { NextResponse } from "next/server";
 import axios from "axios";
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
-export async function POST(request: Request, response: Response) {
+export async function POST(request: Request) {
   const secretKey = process?.env?.RECAPTCHA_SECRET;
   const postData = await request.json();
   const { gRecaptchaToken, name, email, message } = postData;
-  console.log(gRecaptchaToken?.slice(0, 10) + "...", name, email, message);
+
+  // We need console logs for debugging the recaptcha
+  /* eslint-disable no-console */
+  /* eslint-disable @typescript-eslint/ban-ts-comment */
 
   // Verifieer de reCAPTCHA
-  let res: any;
+  let res: { data?: { success: boolean; score: number } } = {};
   const formData = `secret=${secretKey}&response=${gRecaptchaToken}`;
   try {
     res = await axios.post(
@@ -115,4 +117,6 @@ export async function POST(request: Request, response: Response) {
       { status: 401 }
     );
   }
+  /* eslint-enable no-console */
+  /* eslint-enable @typescript-eslint/ban-ts-comment */
 }

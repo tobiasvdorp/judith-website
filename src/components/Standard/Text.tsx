@@ -1,5 +1,4 @@
 import { twMerge } from "tailwind-merge";
-import Title from "./Title";
 import Button from "@/components/Standard/Button";
 
 export type TextProps = {

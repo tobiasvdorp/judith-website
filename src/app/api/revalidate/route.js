@@ -5,7 +5,7 @@ let isBuilding = false;
 let lastBuildTime = 0;
 const BUILD_COOLDOWN = 30000; // 30 seconds cooldown between builds
 
-export async function POST(req, res) {
+export async function POST(req) {
   try {
     // Controleer het geheim (optioneel maar aanbevolen voor beveiliging)
     const secret = req.headers.get("x-builder-secret");
